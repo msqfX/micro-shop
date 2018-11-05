@@ -1,0 +1,111 @@
+server:
+  port: 8080
+
+#系统配置
+spring:
+  thymeleaf:
+    cache: false
+    encoding: UTF-8
+    prefix: classpath:/templates/
+    suffix: .html
+    check-template-location: true
+    mode: LEGACYHTML5
+    #配置静态资源
+    resources:
+      static-locations: classpath:static/,classpath:templates/
+    servlet:
+      content-type: text/html
+  http:
+    encoding:
+      force: true
+      charset: UTF-8
+      enabled: true
+
+  datasource:
+    url: jdbc:mysql://47.107.92.79:3306/microshop?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=GMT%2B8
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: microshop
+    password: "Microshop123."
+    password_encrypted: "true"
+    driverClassName: com.mysql.jdbc.Driver
+    maxActive: 30
+    minIdle : 10
+    maxWait: 1000
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    keepAlive: true
+    minEvictableIdleTimeMillis: 60000
+    validationQuery: "SELECT 'x'"
+    testWhileIdle: true
+    filters: "stat"
+
+  mvc:
+   view:
+    prefix: classpath:templates/
+    suffix: .html
+
+
+druid:
+    url: jdbc:mysql://47.107.92.79:3306/microshop?characterEncoding=utf-8
+    driver-class: com.mysql.jdbc.Driver
+    username: microshop
+    password: Microshop123.
+    initial-size: 1
+    min-idle: 1
+    max-active: 20
+    test-on-borrow: true
+    max-wait: 60000
+    time-between-eviction-runs-millis: 60000
+    min-evictable-idle-time-millis: 300000
+    validation-query: SELECT 1 FROM DUAL
+    test-While-Idle: true
+    test-on-return: false
+    pool-prepared-statements: false
+    max-pool-prepared-statement-per-connection-size: 20
+    filters: stat,wall,log4j,config
+    connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000;config.decrypt=true
+    monitor:
+          enabled: fales
+          druid-stat-view: /druid/*
+          druid-web-stat-filter: /*
+          allow: 219.230.50.107,127.0.0.1
+          deny: 192.168.1.73
+          login-username: admin
+          login-password: 123456
+          exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
+          reset-enable: false
+mybatis:
+    type-aliases-package: com.shop.pojo
+    mapper-locations: classpath:mapper/*.xml
+
+#pagehelper插件信息
+pagehelper:
+  auto-dialect: mysql
+  offset-as-page-num: true
+  row-bounds-with-count: true
+  page-size-zero: true
+  reasonable: false
+  params: pageNum=pageHelperStart;pageSize=pageHelperRows;
+  support-methods-arguments: false
+
+
+
+
+
+
+#pagehelper:
+#    helperDialect: mysql
+#    reasonable: true
+#    supportMethodsArguments: true
+#    params: count=countSql
+#
+## swagger2
+#swagger2.package: cn.binux.admin.service
+#
+## Redis
+#redisKey:
+#  # 缓存时间 默认半小时
+#  expire_time: 1800
+#  prefix:
+#    # 首页广告
+#    index_ad: 'INDEX_AD'

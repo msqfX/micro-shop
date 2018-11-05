@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Gradle: io.zipkin.brave:brave-instrumentation-httpasyncclient:5.1.4">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.zipkin.brave/brave-instrumentation-httpasyncclient/5.1.4/90fcfe92a2ac070115ee1b51d3163077c397f5f0/brave-instrumentation-httpasyncclient-5.1.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
