@@ -1,6 +1,6 @@
 package com.shop.dao;
 
-import com.shop.po.OrderExample;
+import com.shop.Example.OrderExample;
 import com.shop.pojo.Order;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

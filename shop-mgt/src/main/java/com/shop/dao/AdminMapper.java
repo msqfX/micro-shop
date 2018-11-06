@@ -1,6 +1,6 @@
 package com.shop.dao;
 
-import com.shop.po.AdminExample;
+import com.shop.Example.AdminExample;
 import com.shop.pojo.Admin;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

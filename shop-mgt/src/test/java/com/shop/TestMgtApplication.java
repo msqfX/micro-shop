@@ -2,10 +2,10 @@ package com.shop;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.shop.Example.ItemExample;
+import com.shop.Example.UserExample;
 import com.shop.dao.ItemMapper;
 import com.shop.dao.UserMapper;
-import com.shop.po.ItemExample;
-import com.shop.po.UserExample;
 import com.shop.pojo.Item;
 import com.shop.pojo.User;
 import com.shop.utils.JedisClient;

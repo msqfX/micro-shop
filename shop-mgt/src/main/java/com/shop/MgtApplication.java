@@ -1,6 +1,8 @@
 package com.shop;
 
 import com.github.pagehelper.PageHelper;
+import com.shop.utils.JedisClient;
+import com.shop.utils.impl.JedisClientSingle;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -30,6 +32,11 @@ public class MgtApplication {
         properties.setProperty("dialect","postgresql");
         pageHelper.setProperties(properties);
         return pageHelper;
+    }
+
+    @Bean
+    public JedisClient jedisClient() {
+        return new JedisClientSingle();
     }
 
 }

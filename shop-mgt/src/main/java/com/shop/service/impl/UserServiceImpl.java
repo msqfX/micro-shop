@@ -1,8 +1,7 @@
 package com.shop.service.impl;
 
+import com.shop.Example.AdminExample;
 import com.shop.dao.AdminMapper;
-import com.shop.dao.UserMapper;
-import com.shop.po.AdminExample;
 import com.shop.pojo.Admin;
 import com.shop.service.UserService;
 import com.shop.utils.MD5Util;
