@@ -8,10 +8,10 @@ import com.shop.po.ItemExample;
 import com.shop.po.UserExample;
 import com.shop.pojo.Item;
 import com.shop.pojo.User;
+import com.shop.utils.JedisClient;
 import com.shop.utils.MD5Util;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runner.Runner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
@@ -32,6 +32,9 @@ public class TestMgtApplication {
 
     @Autowired
     private ItemMapper itemMapper;
+
+    @Autowired
+    private JedisClient jedisClient;
 
     @Test
     public void test(){
@@ -68,5 +71,11 @@ public class TestMgtApplication {
         long total  = pageInfo.getTotal();
         System.out.println(total);
 
+    }
+
+    @Test
+    public void testRedis(){
+        jedisClient.set("test","hello");
+        System.out.println(jedisClient.get("test"));
     }
 }
