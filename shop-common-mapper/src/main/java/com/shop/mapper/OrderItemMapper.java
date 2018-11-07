@@ -3,8 +3,11 @@ package com.shop.mapper;
 import com.shop.pojo.OrderItem;
 import com.shop.Example.OrderItemExample;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+@Mapper
 public interface OrderItemMapper {
     long countByExample(OrderItemExample example);
 

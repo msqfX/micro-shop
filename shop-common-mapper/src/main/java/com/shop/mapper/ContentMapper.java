@@ -3,8 +3,11 @@ package com.shop.mapper;
 import com.shop.pojo.Content;
 import com.shop.Example.ContentExample;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+@Mapper
 public interface ContentMapper {
     long countByExample(ContentExample example);
 

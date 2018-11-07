@@ -1,0 +1,25 @@
+server:
+  port: ${web.server.port:8105}
+
+spring:
+  application:
+    name: shop-web-portal
+
+  security.basic.enabled: false
+
+#management:
+ # security:
+  #  enabled: false
+
+eureka:
+  instance:
+    status-page-url: http://localhost:${server.port}/swagger-ui.html # ${server.port}为该服务的端口号
+  client:
+    serviceUrl:
+      defaultZone: ${eureka.serviceUrl:http://127.0.0.1:8501/eureka/}
+
+#feign:
+ # hystrix:
+  # enabled: true
+
+# hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 5000

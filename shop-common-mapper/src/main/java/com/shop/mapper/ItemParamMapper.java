@@ -3,8 +3,11 @@ package com.shop.mapper;
 import com.shop.pojo.ItemParam;
 import com.shop.Example.ItemParamExample;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+@Mapper
 public interface ItemParamMapper {
     long countByExample(ItemParamExample example);
 

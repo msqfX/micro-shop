@@ -3,8 +3,11 @@ package com.shop.mapper;
 import com.shop.pojo.ItemDesc;
 import com.shop.Example.ItemDescExample;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+@Mapper
 public interface ItemDescMapper {
     long countByExample(ItemDescExample example);
 

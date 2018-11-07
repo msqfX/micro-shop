@@ -3,7 +3,7 @@ package com.shop.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.shop.Example.ItemExample;
-import com.shop.dao.ItemMapper;
+import com.shop.mapper.ItemMapper;
 import com.shop.pojo.Item;
 import com.shop.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;

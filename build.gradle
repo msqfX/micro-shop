@@ -44,7 +44,7 @@ configure(allprojects) { project ->
         springBootVersion           = '2.0.6.RELEASE'
         logbackkafkaVersion         = "0.1.0"
         servletapiVersion           = "4.0.1"
-        jedisVersion                = "2.9.0"
+        jedisVersion                = "2.7.3"
         commonslang3Version         = "3.3.2"
         commonsioVersion            = "1.3.2"
         commonslangVersion          = "2.6"
@@ -58,7 +58,7 @@ configure(allprojects) { project ->
         springBootDruidVersion      = '1.1.10'
         springBootActuatorVersion   = '2.0.6.RELEASE'
 
-        eurekaServerVersion         = '1.2.3.RELEASE'
+        eurekaServerVersion         = '2.0.2.RELEASE'
         eurekaVersion               = '1.4.6.RELEASE'
         zuulVersion                 = '1.4.6.RELEASE'
         feignVersion                = '1.4.6.RELEASE'
@@ -203,7 +203,7 @@ project("shop-service-cart") {
     dependencies {
         compile(project(":shop-service-cart-api"))
         compile(project(":shop-common-mapper"))
-        compile("org.springframework.cloud:spring-cloud-starter-eureka:${eurekaServerVersion}")
+        compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server:${eurekaServerVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-zipkin:${zipKinVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-hystrix:${hystrixVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-bus-amqp:${amapVersion}")
@@ -230,7 +230,7 @@ project("shop-service-item") {
     dependencies {
         compile(project(":shop-service-item-api"))
         compile(project(":shop-common-mapper"))
-        compile("org.springframework.cloud:spring-cloud-starter-eureka:${eurekaServerVersion}")
+        compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server:${eurekaServerVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-zipkin:${zipKinVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-hystrix:${hystrixVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-bus-amqp:${amapVersion}")
@@ -256,7 +256,7 @@ project("shop-service-notify") {
     dependencies {
         compile(project(":shop-service-notify-api"))
         compile(project(":shop-common-mapper"))
-        compile("org.springframework.cloud:spring-cloud-starter-eureka:${eurekaServerVersion}")
+        compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server:${eurekaServerVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-zipkin:${zipKinVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-hystrix:${hystrixVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-bus-amqp:${amapVersion}")
@@ -282,7 +282,7 @@ project("shop-service-order") {
         compile(project(":shop-service-order-api"))
         compile(project(":shop-service-sso-api"))
         compile(project(":shop-common-mapper"))
-        compile("org.springframework.cloud:spring-cloud-starter-eureka:${eurekaServerVersion}")
+        compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server:${eurekaServerVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-zipkin:${zipKinVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-hystrix:${hystrixVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-bus-amqp:${amapVersion}")
@@ -309,7 +309,7 @@ project("shop-service-portal") {
     dependencies {
         compile(project(":shop-service-portal-api"))
         compile(project(":shop-common-mapper"))
-        compile("org.springframework.cloud:spring-cloud-starter-eureka:${eurekaServerVersion}")
+        compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server:${eurekaServerVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-zipkin:${zipKinVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-hystrix:${hystrixVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-bus-amqp:${amapVersion}")
@@ -334,7 +334,7 @@ project("shop-service-search") {
     dependencies {
         compile(project(":shop-service-search-api"))
         compile(project(":shop-common-mapper"))
-        compile("org.springframework.cloud:spring-cloud-starter-eureka:${eurekaServerVersion}")
+        compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server:${eurekaServerVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-zipkin:${zipKinVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-hystrix:${hystrixVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-bus-amqp:${amapVersion}")
@@ -358,7 +358,7 @@ project("shop-service-sso") {
     dependencies {
         compile(project(":shop-service-sso-api"))
         compile(project(":shop-common-mapper"))
-        compile("org.springframework.cloud:spring-cloud-starter-eureka:${eurekaServerVersion}")
+        compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server:${eurekaServerVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-zipkin:${zipKinVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-hystrix:${hystrixVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-bus-amqp:${amapVersion}")
@@ -374,8 +374,8 @@ project("shop-web-cart") {
 
     dependencies {
         compile(project(":shop-service-cart-api"))
-        compile("org.springframework.boot:spring-boot-starter-web")
-        compile("org.springframework.cloud:spring-cloud-starter-eureka:${eurekaServerVersion}")
+        compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
+        compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server:${eurekaServerVersion}")
         compile("com.ctrip.framework.apollo:apollo-client:${apolloclientVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-hystrix:${hystrixVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-bus-amqp:${amapVersion}")
@@ -393,8 +393,8 @@ project("shop-web-item") {
 
     dependencies {
         compile(project(":shop-service-item-api"))
-        compile("org.springframework.boot:spring-boot-starter-web")
-        compile("org.springframework.cloud:spring-cloud-starter-eureka:${eurekaServerVersion}")
+        compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
+        compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server:${eurekaServerVersion}")
         compile("com.ctrip.framework.apollo:apollo-client:${apolloclientVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-hystrix:${hystrixVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-bus-amqp:${amapVersion}")
@@ -415,8 +415,8 @@ project("shop-web-order") {
         compile(project(":shop-service-notify-api"))
         compile(project(":shop-service-sso-api"))
         compile(project(":shop-service-cart-api"))
-        compile("org.springframework.boot:spring-boot-starter-web")
-        compile("org.springframework.cloud:spring-cloud-starter-eureka:${eurekaServerVersion}")
+        compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
+        compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server:${eurekaServerVersion}")
         compile("com.ctrip.framework.apollo:apollo-client:${apolloclientVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-hystrix:${hystrixVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-bus-amqp:${amapVersion}")
@@ -434,16 +434,17 @@ project("shop-web-portal") {
 
     dependencies {
         compile(project(":shop-service-portal-api"))
-        compile("org.springframework.boot:spring-boot-starter-web")
-        compile("org.springframework.cloud:spring-cloud-starter-eureka:${eurekaServerVersion}")
-        compile("com.ctrip.framework.apollo:apollo-client:${apolloclientVersion}")
-        compile("org.springframework.cloud:spring-cloud-starter-hystrix:${hystrixVersion}")
+        compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
+        compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server:${eurekaServerVersion}")
+        //compile("com.ctrip.framework.apollo:apollo-client:${apolloclientVersion}")
+        //compile("org.springframework.cloud:spring-cloud-starter-hystrix:${hystrixVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-bus-amqp:${amapVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-zipkin:${zipKinVersion}")
         compile("org.springframework.boot:spring-boot-starter-aop")
         compile("org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}")
-        compile("org.springframework.retry:spring-retry")
-        compile("com.piggsoft:beetl-spring-boot-starter:${beetl_starterVersion}")
+        //compile("org.springframework.retry:spring-retry")
+        compile("com.ibeetl:beetl:2.9.3")
+        compile("javax.servlet:javax.servlet-api:${servletapiVersion}")
     }
 }
 
@@ -452,8 +453,8 @@ project("shop-web-search") {
 
     dependencies {
         compile(project(":shop-service-search-api"))
-        compile("org.springframework.boot:spring-boot-starter-web")
-        compile("org.springframework.cloud:spring-cloud-starter-eureka:${eurekaServerVersion}")
+        compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
+        compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server:${eurekaServerVersion}")
         compile("com.ctrip.framework.apollo:apollo-client:${apolloclientVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-hystrix:${hystrixVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-bus-amqp:${amapVersion}")
@@ -471,8 +472,8 @@ project("shop-web-sso") {
     dependencies {
         compile(project(":shop-service-sso-api"))
         compile(project(":shop-service-notify-api"))
-        compile("org.springframework.boot:spring-boot-starter-web")
-        compile("org.springframework.cloud:spring-cloud-starter-eureka:${eurekaServerVersion}")
+        compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
+        compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server:${eurekaServerVersion}")
         compile("com.ctrip.framework.apollo:apollo-client:${apolloclientVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-hystrix:${hystrixVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-bus-amqp:${amapVersion}")
@@ -480,7 +481,7 @@ project("shop-web-sso") {
         compile("org.springframework.boot:spring-boot-starter-aop")
         compile("org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}")
         compile("org.springframework.retry:spring-retry")
-        compile("com.piggsoft:beetl-spring-boot-starter:${beetl_starterVersion}")
+        compile("com.ibeetl:beetl:2.9.3")
         compile("org.springframework.boot:spring-boot-starter-data-redis:${springBootRedisVersion}")
     }
 }
