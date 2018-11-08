@@ -62,7 +62,7 @@ configure(allprojects) { project ->
         eurekaVersion               = '1.4.6.RELEASE'
         zuulVersion                 = '1.4.6.RELEASE'
         feignVersion                = '1.4.6.RELEASE'
-        hystrixVersion              = '1.4.6.RELEASE'
+        hystrixVersion              = '2.0.2.RELEASE'
 
         apolloclientVersion         = "0.8.0"
         springBootRedisVersion      = '2.0.6.RELEASE'
@@ -73,8 +73,8 @@ configure(allprojects) { project ->
         solrVersion                 = '4.0.1.RELEASE'
 
         beetl_starterVersion        = "0.0.3"
-
-        lombokVersion               = "1.16.16"
+        log4jVersion                = "1.2.17"
+        lombokVersion               = "1.18.4"
 
     }
 
@@ -131,6 +131,7 @@ project("shop-common-mapper") {
         compile("mysql:mysql-connector-java:${mysqlVersion}")
         compile("org.mybatis.spring.boot:mybatis-spring-boot-starter:${springBootMyBatisVersion}")
         compile("com.github.pagehelper:pagehelper-spring-boot-starter:${springBootpagehelperVersion}")
+        compile("log4j:log4j:${log4jVersion}")
         compile("com.alibaba:druid-spring-boot-starter:${springBootDruidVersion}")
         compile fileTree(dir: 'src', includes: ['/*.xml'])
     }
@@ -150,7 +151,7 @@ project("shop-common-pojo") {
     description = "shop-common-pojo"
 
     dependencies {
-        compileOnly("org.projectlombok:lombok:${lombokVersion}")
+        compile("org.projectlombok:lombok:${lombokVersion}")
     }
 }
 
@@ -205,7 +206,7 @@ project("shop-service-cart") {
         compile(project(":shop-common-mapper"))
         compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server:${eurekaServerVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-zipkin:${zipKinVersion}")
-        compile("org.springframework.cloud:spring-cloud-starter-hystrix:${hystrixVersion}")
+        compile("org.springframework.cloud:spring-cloud-starter-netflix-hystrix:${hystrixVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-bus-amqp:${amapVersion}")
         compile("com.ctrip.framework.apollo:apollo-client:${apolloclientVersion}")
 //        compile("org.springframework.data:spring-data-redis") //暂时不使用
@@ -232,7 +233,7 @@ project("shop-service-item") {
         compile(project(":shop-common-mapper"))
         compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server:${eurekaServerVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-zipkin:${zipKinVersion}")
-        compile("org.springframework.cloud:spring-cloud-starter-hystrix:${hystrixVersion}")
+        compile("org.springframework.cloud:spring-cloud-starter-netflix-hystrix:${hystrixVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-bus-amqp:${amapVersion}")
         compile("com.ctrip.framework.apollo:apollo-client:${apolloclientVersion}")
 //        compile("org.springframework.data:spring-data-redis") //暂时不使用
@@ -258,7 +259,7 @@ project("shop-service-notify") {
         compile(project(":shop-common-mapper"))
         compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server:${eurekaServerVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-zipkin:${zipKinVersion}")
-        compile("org.springframework.cloud:spring-cloud-starter-hystrix:${hystrixVersion}")
+        compile("org.springframework.cloud:spring-cloud-starter-netflix-hystrix:${hystrixVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-bus-amqp:${amapVersion}")
         compile("com.ctrip.framework.apollo:apollo-client:${apolloclientVersion}")
 //        compile("org.springframework.data:spring-data-redis") //暂时不使用
@@ -284,7 +285,7 @@ project("shop-service-order") {
         compile(project(":shop-common-mapper"))
         compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server:${eurekaServerVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-zipkin:${zipKinVersion}")
-        compile("org.springframework.cloud:spring-cloud-starter-hystrix:${hystrixVersion}")
+        compile("org.springframework.cloud:spring-cloud-starter-netflix-hystrix:${hystrixVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-bus-amqp:${amapVersion}")
         compile("com.ctrip.framework.apollo:apollo-client:${apolloclientVersion}")
 //        compile("org.springframework.data:spring-data-redis") //暂时不使用
@@ -311,11 +312,13 @@ project("shop-service-portal") {
         compile(project(":shop-common-mapper"))
         compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server:${eurekaServerVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-zipkin:${zipKinVersion}")
-        compile("org.springframework.cloud:spring-cloud-starter-hystrix:${hystrixVersion}")
+        compile("org.springframework.cloud:spring-cloud-starter-netflix-hystrix:${hystrixVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-bus-amqp:${amapVersion}")
         compile("com.ctrip.framework.apollo:apollo-client:${apolloclientVersion}")
 //        compile("org.springframework.data:spring-data-redis") //暂时不使用
         compile("org.springframework.boot:spring-boot-starter-data-redis:${springBootRedisVersion}")
+        compile("javax.servlet:javax.servlet-api:${servletapiVersion}")
+        compile("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
     }
 }
 
@@ -326,6 +329,7 @@ project("shop-service-search-api") {
         compile(project(":shop-common"))
         compile(project(":shop-common-pojo"))
         compile("org.springframework.cloud:spring-cloud-starter-feign:${feignVersion}")
+        compile("org.springframework.cloud:spring-cloud-starter-openfeign:2.0.2.RELEASE")
     }
 }
 project("shop-service-search") {
@@ -336,7 +340,7 @@ project("shop-service-search") {
         compile(project(":shop-common-mapper"))
         compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server:${eurekaServerVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-zipkin:${zipKinVersion}")
-        compile("org.springframework.cloud:spring-cloud-starter-hystrix:${hystrixVersion}")
+        compile("org.springframework.cloud:spring-cloud-starter-netflix-hystrix:${hystrixVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-bus-amqp:${amapVersion}")
         compile("com.ctrip.framework.apollo:apollo-client:${apolloclientVersion}")
         compile("org.springframework.data:spring-data-solr:${solrVersion}")
@@ -360,7 +364,7 @@ project("shop-service-sso") {
         compile(project(":shop-common-mapper"))
         compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server:${eurekaServerVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-zipkin:${zipKinVersion}")
-        compile("org.springframework.cloud:spring-cloud-starter-hystrix:${hystrixVersion}")
+        compile("org.springframework.cloud:spring-cloud-starter-netflix-hystrix:${hystrixVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-bus-amqp:${amapVersion}")
         compile("com.ctrip.framework.apollo:apollo-client:${apolloclientVersion}")
 //        compile("org.springframework.data:spring-data-redis") //暂时不使用
@@ -377,7 +381,7 @@ project("shop-web-cart") {
         compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server:${eurekaServerVersion}")
         compile("com.ctrip.framework.apollo:apollo-client:${apolloclientVersion}")
-        compile("org.springframework.cloud:spring-cloud-starter-hystrix:${hystrixVersion}")
+        compile("org.springframework.cloud:spring-cloud-starter-netflix-hystrix:${hystrixVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-bus-amqp:${amapVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-zipkin:${zipKinVersion}")
         compile("org.springframework.boot:spring-boot-starter-aop")
@@ -396,7 +400,7 @@ project("shop-web-item") {
         compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server:${eurekaServerVersion}")
         compile("com.ctrip.framework.apollo:apollo-client:${apolloclientVersion}")
-        compile("org.springframework.cloud:spring-cloud-starter-hystrix:${hystrixVersion}")
+        compile("org.springframework.cloud:spring-cloud-starter-netflix-hystrix:${hystrixVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-bus-amqp:${amapVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-zipkin:${zipKinVersion}")
         compile("org.springframework.boot:spring-boot-starter-aop")
@@ -418,7 +422,7 @@ project("shop-web-order") {
         compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server:${eurekaServerVersion}")
         compile("com.ctrip.framework.apollo:apollo-client:${apolloclientVersion}")
-        compile("org.springframework.cloud:spring-cloud-starter-hystrix:${hystrixVersion}")
+        compile("org.springframework.cloud:spring-cloud-starter-netflix-hystrix:${hystrixVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-bus-amqp:${amapVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-zipkin:${zipKinVersion}")
         compile("org.springframework.boot:spring-boot-starter-aop")
@@ -436,13 +440,13 @@ project("shop-web-portal") {
         compile(project(":shop-service-portal-api"))
         compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server:${eurekaServerVersion}")
-        //compile("com.ctrip.framework.apollo:apollo-client:${apolloclientVersion}")
-        //compile("org.springframework.cloud:spring-cloud-starter-hystrix:${hystrixVersion}")
+        compile("com.ctrip.framework.apollo:apollo-client:${apolloclientVersion}")
+        compile("org.springframework.cloud:spring-cloud-starter-netflix-hystrix:${hystrixVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-bus-amqp:${amapVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-zipkin:${zipKinVersion}")
         compile("org.springframework.boot:spring-boot-starter-aop")
         compile("org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}")
-        //compile("org.springframework.retry:spring-retry")
+        compile("org.springframework.retry:spring-retry")
         compile("com.ibeetl:beetl:2.9.3")
         compile("javax.servlet:javax.servlet-api:${servletapiVersion}")
     }
@@ -456,7 +460,7 @@ project("shop-web-search") {
         compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server:${eurekaServerVersion}")
         compile("com.ctrip.framework.apollo:apollo-client:${apolloclientVersion}")
-        compile("org.springframework.cloud:spring-cloud-starter-hystrix:${hystrixVersion}")
+        compile("org.springframework.cloud:spring-cloud-starter-netflix-hystrix:${hystrixVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-bus-amqp:${amapVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-zipkin:${zipKinVersion}")
         compile("org.springframework.boot:spring-boot-starter-aop")
@@ -475,7 +479,7 @@ project("shop-web-sso") {
         compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server:${eurekaServerVersion}")
         compile("com.ctrip.framework.apollo:apollo-client:${apolloclientVersion}")
-        compile("org.springframework.cloud:spring-cloud-starter-hystrix:${hystrixVersion}")
+        compile("org.springframework.cloud:spring-cloud-starter-netflix-hystrix:${hystrixVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-bus-amqp:${amapVersion}")
         compile("org.springframework.cloud:spring-cloud-starter-zipkin:${zipKinVersion}")
         compile("org.springframework.boot:spring-boot-starter-aop")

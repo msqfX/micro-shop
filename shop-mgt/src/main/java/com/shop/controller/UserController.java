@@ -1,7 +1,7 @@
 package com.shop.controller;
 
 import com.shop.pojo.Admin;
-import com.shop.service.UserService;
+import com.shop.portal.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;

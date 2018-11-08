@@ -6,7 +6,10 @@ import org.beetl.ext.spring.BeetlSpringViewResolver;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.support.ResourcePatternResolver;
@@ -18,9 +21,10 @@ import java.io.IOException;
  * Created By Lizhengyuan on 18-11-7
  */
 @SpringBootApplication
+@ServletComponentScan
 @EnableEurekaClient
-//@EnableFeignClients
-//@EnableHystrix
+@EnableFeignClients(basePackages = {" com.shop.portal"})
+@EnableHystrix
 public class ShopWebPortalApplication{
 
     public static void main(String[] args) {

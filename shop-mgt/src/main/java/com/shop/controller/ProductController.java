@@ -1,6 +1,6 @@
 package com.shop.controller;
 
-import com.shop.service.ProductService;
+import com.shop.portal.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
