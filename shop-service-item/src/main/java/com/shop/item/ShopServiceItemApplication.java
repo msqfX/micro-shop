@@ -1,4 +1,4 @@
-package com.shop.portal;
+package com.shop.item;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
@@ -9,7 +9,7 @@ import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
- * Created By Lizhengyuan on 18-11-8
+ * Created By Lizhengyuan on 18-11-12
  */
 @SpringBootApplication
 @EnableDiscoveryClient
@@ -17,10 +17,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @MapperScan(basePackages = "com.shop.mapper")
 @EnableCircuitBreaker//对hystrixR熔断机制的支持
 @EnableHystrix
-public class ShopServicePortalApplication {
+public class ShopServiceItemApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ShopServicePortalApplication.class, args);
+        SpringApplication.run(ShopServiceItemApplication.class, args);
     }
 
 }

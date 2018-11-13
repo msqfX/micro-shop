@@ -1,18 +1,17 @@
 package com.shop.portal.service;
 
 import com.shop.portal.service.hystrix.PortalServiceHystrix;
-import org.springframework.cloud.netflix.feign.FeignClient;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import feign.RequestLine;
+import org.springframework.cloud.openfeign.FeignClient;
 
 /**
  * Created By Lizhengyuan on 18-11-8
  */
-@FeignClient(value = "shop-service-portal",fallback = PortalServiceHystrix.class)
+@FeignClient(value = "shop-service-portal",fallbackFactory = PortalServiceHystrix.class)
 public interface PortalService {
 
-    @RequestMapping(value = "/getSortMenuList",method = RequestMethod.GET)
+    //@RequestMapping(value = "/getSortMenuList",method = RequestMethod.GET)
+    @RequestLine("GET /getSortMenuList")
     Object getSortMenuList();
 
-    
 }

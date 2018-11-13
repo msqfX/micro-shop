@@ -22,4 +22,4 @@ eureka:
  # hystrix:
   # enabled: true
 
-# hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 5000
+#hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 5000

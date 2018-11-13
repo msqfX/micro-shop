@@ -9,7 +9,7 @@ import com.shop.utils.JsonUtils;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -19,9 +19,8 @@ import java.util.List;
  * Created By Lizhengyuan on 18-11-8
  */
 @Api(value = "API - PortalServiceImpl", description = "首页操作")
-@RestController
 @RefreshScope
-@Component
+@Service
 public class PortalServiceImpl implements PortalService {
 
     @Autowired

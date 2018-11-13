@@ -5,18 +5,18 @@ spring:
   security.basic.enabled: false
 
 server:
-  port: ${service.server.port:8515}
+  port: ${service.server.port:8200}
 
-management:
-  security:
-    enabled: false
+#management:
+ # security:
+  # enabled: false
 
 eureka:
   instance:
     status-page-url: http://localhost:${server.port}/swagger-ui.html # ${server.port}为该服务的端口号
   client:
     serviceUrl:
-      defaultZone: ${eureka.serviceUrl:http://127.0.0.1:8503/eureka/}
+      defaultZone: ${eureka.serviceUrl:http://127.0.0.1:8501/eureka/}
 
 # REDIS (RedisProperties)
 redis:

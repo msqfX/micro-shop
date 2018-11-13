@@ -1,15 +1,17 @@
 server:
-  port: ${web.server.port:8102}
+  port: ${service.server.port:8205}
 
 spring:
   application:
-    name: shop-web-portal
+    name: shop-service-item
 
   security.basic.enabled: false
 
+
+
 #management:
  # security:
-  #  enabled: false
+  # enabled: false
 
 eureka:
   instance:
@@ -18,8 +20,9 @@ eureka:
     serviceUrl:
       defaultZone: ${eureka.serviceUrl:http://127.0.0.1:8501/eureka/}
 
-feign:
-  hystrix:
-    enabled: true
-
-hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 5000
+# REDIS (RedisProperties)
+redis:
+  cluster: false
+  single-host: 47.107.92.79
+  single-port: 6379
+  password:
