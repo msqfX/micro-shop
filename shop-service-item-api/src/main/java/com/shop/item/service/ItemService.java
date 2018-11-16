@@ -1,8 +1,10 @@
 package com.shop.item.service;
 
-import feign.Param;
-import feign.RequestLine;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * Created By Lizhengyuan on 18-11-12
@@ -10,7 +12,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 @FeignClient(value = "shop-service-item")
 public interface ItemService {
 
-    @RequestLine("GET /getItemById?id={id}")
-   // @RequestMapping(value = "/getItemById/?id={id}", method = RequestMethod.GET)
-    Object getItemById(@Param("id") String id);
+    //@RequestLine("GET /getItemById")
+    @RequestMapping(value = "/getItemById", method = RequestMethod.GET)
+    Object getItemById(@RequestParam(value = "id") String id);
 }

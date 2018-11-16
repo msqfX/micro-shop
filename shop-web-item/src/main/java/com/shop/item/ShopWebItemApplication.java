@@ -64,9 +64,9 @@ public class ShopWebItemApplication {
         return beetlSpringViewResolver;
     }
 
-    @Bean
+    /*@Bean
     public Contract feignConfiguration(){
         return new feign.Contract.Default();
-    }
+    }*/
 
 }
