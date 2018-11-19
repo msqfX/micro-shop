@@ -9,9 +9,9 @@ import org.springframework.stereotype.Component;
  * Created By Lizhengyuan on 18-11-8
  */
 @Component
-public class PortalServiceHystrix implements FallbackFactory<PortalService> {
+public class PortalServiceHystrix/* implements FallbackFactory<PortalService>*/ {
 
-
+/*
     @Override
     public PortalService create(Throwable cause) {
         return new PortalService() {
@@ -20,5 +20,5 @@ public class PortalServiceHystrix implements FallbackFactory<PortalService> {
                 return RespResult.buildErrorJson("获取首页列表异常");
             }
         };
-    }
+    }*/
 }

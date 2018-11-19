@@ -28,6 +28,11 @@ public class PortalController {
         return "hello";
     }
 
+    /**
+     * 首页
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "index", method = RequestMethod.GET)
     public String index(Model model){
         model.addAttribute("sortMenuList", portalService.getSortMenuList());

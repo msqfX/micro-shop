@@ -19,8 +19,7 @@ import java.util.List;
  * Created By Lizhengyuan on 18-11-8
  */
 @Api(value = "API - PortalServiceImpl", description = "首页操作")
-@RefreshScope
-@Service
+@RestController
 public class PortalServiceImpl implements PortalService {
 
     @Autowired
