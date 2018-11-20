@@ -5,6 +5,14 @@ import java.util.Date;
 public class User {
     private Long id;
 
+    public String getChkRememberMe() {
+        return chkRememberMe;
+    }
+
+    public void setChkRememberMe(String chkRememberMe) {
+        this.chkRememberMe = chkRememberMe;
+    }
+
     private String username;
 
     private String password;
@@ -16,6 +24,8 @@ public class User {
     private Date created;
 
     private Date updated;
+
+    private String chkRememberMe;
 
     public Long getId() {
         return id;

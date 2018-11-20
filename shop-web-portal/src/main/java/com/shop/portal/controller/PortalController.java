@@ -4,6 +4,7 @@ import com.shop.portal.service.PortalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -16,10 +17,10 @@ public class PortalController {
     @Autowired
     private PortalService portalService;
 
-    /*@RequestMapping("/{page}")
+    @RequestMapping("/{page}")
     public String getPage(@PathVariable String page){
         return page;
-    }*/
+    }
 
     @RequestMapping("/hellobtl")
     public String helloBeetl(Model model){
@@ -33,12 +34,10 @@ public class PortalController {
      * @param model
      * @return
      */
-    @RequestMapping(value = "index", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(Model model){
         model.addAttribute("sortMenuList", portalService.getSortMenuList());
         return "index";
     }
-
-
 
 }

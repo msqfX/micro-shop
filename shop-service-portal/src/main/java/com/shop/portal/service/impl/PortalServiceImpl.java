@@ -4,6 +4,7 @@ import com.shop.Example.ItemCatExample;
 import com.shop.mapper.ItemCatMapper;
 import com.shop.pojo.CatNode;
 import com.shop.pojo.ItemCat;
+import com.shop.pojo.ItemCatVo;
 import com.shop.portal.service.PortalService;
 import com.shop.utils.JsonUtils;
 import io.swagger.annotations.Api;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created By Lizhengyuan on 18-11-8
@@ -70,10 +72,14 @@ public class PortalServiceImpl implements PortalService {
                     CatNode nextNode = new CatNode();
                     nextNode.setName(next.getName());
                     nextNode.setUrl("/getItemByCat?itemCatId="+next.getId());
-                    List<String> childItem = new ArrayList<>();
+                    List<ItemCatVo> childItem = new ArrayList<>();
+                    ItemCatVo itemCatVo = new ItemCatVo();
                     childList.forEach( child -> {
                         if(next.getId() == child.getParentId()){
-                            childItem.add("/getItemByCat?itemCatId="+child.getId());
+                            itemCatVo.setName(next.getName());
+                            itemCatVo.setUrl(next.getName());
+                            //childItem.add("/getItemByCat?itemCatId="+child.getId());
+                            childItem.add(itemCatVo);
                         }
                     });
                     nextNode.setItem(childItem);

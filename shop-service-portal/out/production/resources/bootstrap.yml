@@ -1,0 +1,26 @@
+server:
+  port: ${service.server.port:8202}
+
+spring:
+  application:
+    name: shop-service-portal
+
+  security.basic.enabled: false
+
+#management:
+ # security:
+  #  enabled: false
+
+eureka:
+  instance:
+    status-page-url: http://localhost:${server.port}/swagger-ui.html # ${server.port}为该服务的端口号
+  client:
+    serviceUrl:
+      defaultZone: ${eureka.serviceUrl:http://127.0.0.1:8501/eureka/}
+
+# REDIS (RedisProperties)
+redis:
+  cluster: false
+  single-host: 47.107.92.79
+  single-port: 6379
+  password:

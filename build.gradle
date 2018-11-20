@@ -61,7 +61,7 @@ configure(allprojects) { project ->
         eurekaServerVersion         = '2.0.2.RELEASE'
         eurekaVersion               = '1.4.6.RELEASE'
         zuulVersion                 = '1.4.6.RELEASE'
-        feignVersion                = '1.4.6.RELEASE'
+        openFeignVersion                = '2.0.2.RELEASE'
         hystrixVersion              = '2.0.2.RELEASE'
 
         apolloclientVersion         = "0.8.0"
@@ -112,7 +112,8 @@ project("shop-common") {
     description = "shop-common"
 
     dependencies {
-        //compileOnly("javax.servlet:javax.servlet-api:${servletapiVersion}")
+        compileOnly("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
+        compileOnly("javax.servlet:javax.servlet-api:${servletapiVersion}")
         compileOnly("redis.clients:jedis:${jedisVersion}")
         compile("org.apache.commons:commons-lang3:${commonslang3Version}")
         compile("commons-lang:commons-lang:${commonslangVersion}")
@@ -194,7 +195,7 @@ project("shop-service-cart-api") {
     dependencies {
         compile(project(":shop-common"))
         compile(project(":shop-common-pojo"))
-        compile("org.springframework.cloud:spring-cloud-starter-feign:${feignVersion}")
+        compile("org.springframework.cloud:spring-cloud-starter-openfeign:${openFeignVersion}")
     }
 }
 
@@ -222,7 +223,7 @@ project("shop-service-item-api") {
     dependencies {
         compile(project(":shop-common"))
         compile(project(":shop-common-pojo"))
-        compile("org.springframework.cloud:spring-cloud-starter-openfeign:2.0.2.RELEASE")
+        compile("org.springframework.cloud:spring-cloud-starter-openfeign:${openFeignVersion}")
     }
 }
 project("shop-service-item") {
@@ -248,7 +249,7 @@ project("shop-service-notify-api") {
     dependencies {
         compile(project(":shop-common"))
         compile(project(":shop-common-pojo"))
-        compile("org.springframework.cloud:spring-cloud-starter-feign:${feignVersion}")
+        compile("org.springframework.cloud:spring-cloud-starter-openfeign:${openFeignVersion}")
     }
 }
 project("shop-service-notify") {
@@ -273,7 +274,7 @@ project("shop-service-order-api") {
     dependencies {
         compile(project(":shop-common"))
         compile(project(":shop-common-pojo"))
-        compile("org.springframework.cloud:spring-cloud-starter-feign:${feignVersion}")
+        compile("org.springframework.cloud:spring-cloud-starter-openfeign:${openFeignVersion}")
     }
 }
 project("shop-service-order") {
@@ -301,7 +302,7 @@ project("shop-service-portal-api") {
     dependencies {
         compile(project(":shop-common"))
         compile(project(":shop-common-pojo"))
-        compile("org.springframework.cloud:spring-cloud-starter-openfeign:2.0.2.RELEASE")
+        compile("org.springframework.cloud:spring-cloud-starter-openfeign:${openFeignVersion}")
     }
 }
 project("shop-service-portal") {
@@ -327,7 +328,7 @@ project("shop-service-search-api") {
     dependencies {
         compile(project(":shop-common"))
         compile(project(":shop-common-pojo"))
-        compile("org.springframework.cloud:spring-cloud-starter-feign:${feignVersion}")
+        compile("org.springframework.cloud:spring-cloud-starter-openfeign:${openFeignVersion}")
     }
 }
 project("shop-service-search") {
@@ -351,7 +352,7 @@ project("shop-service-sso-api") {
     dependencies {
         compile(project(":shop-common"))
         compile(project(":shop-common-pojo"))
-        compile("org.springframework.cloud:spring-cloud-starter-feign:${feignVersion}")
+        compile("org.springframework.cloud:spring-cloud-starter-openfeign:${openFeignVersion}")
     }
 }
 project("shop-service-sso") {
@@ -366,6 +367,8 @@ project("shop-service-sso") {
         compile("org.springframework.cloud:spring-cloud-starter-bus-amqp:${amapVersion}")
         compile("com.ctrip.framework.apollo:apollo-client:${apolloclientVersion}")
         compile("org.springframework.boot:spring-boot-starter-data-redis:${springBootRedisVersion}")
+        compile("javax.servlet:javax.servlet-api:${servletapiVersion}")
+        compile("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
     }
 }
 
@@ -482,6 +485,7 @@ project("shop-web-sso") {
         compile("org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}")
         compile("org.springframework.retry:spring-retry")
         compile("com.ibeetl:beetl:${beetlVersion}")
+        compile("javax.servlet:javax.servlet-api:${servletapiVersion}")
         compile("org.springframework.boot:spring-boot-starter-data-redis:${springBootRedisVersion}")
     }
 }
