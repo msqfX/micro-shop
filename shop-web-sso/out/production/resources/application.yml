@@ -18,5 +18,5 @@ big_ad_index: 1
 
 
 # 成功响应首页
-portal_path: '({"success":"http://localhost:8102/"})'
+portal_path: http://localhost:8102/
 

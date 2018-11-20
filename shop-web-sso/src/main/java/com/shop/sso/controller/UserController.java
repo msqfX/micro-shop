@@ -4,7 +4,7 @@ import com.shop.common.Constant;
 import com.shop.common.RespResult;
 import com.shop.pojo.User;
 import com.shop.sso.service.UserService;
-import com.shop.utils.impl.CookieUtil;
+import com.shop.utils.CookieUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;

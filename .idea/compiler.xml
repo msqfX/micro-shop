@@ -4,5 +4,63 @@
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="micro-shop_main" target="1.8" />
+      <module name="micro-shop_test" target="1.8" />
+      <module name="shop-common-mapper_main" target="1.8" />
+      <module name="shop-common-mapper_test" target="1.8" />
+      <module name="shop-common-pojo_main" target="1.8" />
+      <module name="shop-common-pojo_test" target="1.8" />
+      <module name="shop-common_main" target="1.8" />
+      <module name="shop-common_test" target="1.8" />
+      <module name="shop-eureka_main" target="1.8" />
+      <module name="shop-eureka_test" target="1.8" />
+      <module name="shop-mgt_main" target="1.8" />
+      <module name="shop-mgt_test" target="1.8" />
+      <module name="shop-service-cart-api_main" target="1.8" />
+      <module name="shop-service-cart-api_test" target="1.8" />
+      <module name="shop-service-cart_main" target="1.8" />
+      <module name="shop-service-cart_test" target="1.8" />
+      <module name="shop-service-cms-api_main" target="1.8" />
+      <module name="shop-service-cms-api_test" target="1.8" />
+      <module name="shop-service-cms_main" target="1.8" />
+      <module name="shop-service-cms_test" target="1.8" />
+      <module name="shop-service-item-api_main" target="1.8" />
+      <module name="shop-service-item-api_test" target="1.8" />
+      <module name="shop-service-item_main" target="1.8" />
+      <module name="shop-service-item_test" target="1.8" />
+      <module name="shop-service-notify-api_main" target="1.8" />
+      <module name="shop-service-notify-api_test" target="1.8" />
+      <module name="shop-service-notify_main" target="1.8" />
+      <module name="shop-service-notify_test" target="1.8" />
+      <module name="shop-service-order-api_main" target="1.8" />
+      <module name="shop-service-order-api_test" target="1.8" />
+      <module name="shop-service-order_main" target="1.8" />
+      <module name="shop-service-order_test" target="1.8" />
+      <module name="shop-service-portal-api_main" target="1.8" />
+      <module name="shop-service-portal-api_test" target="1.8" />
+      <module name="shop-service-portal_main" target="1.8" />
+      <module name="shop-service-portal_test" target="1.8" />
+      <module name="shop-service-search-api_main" target="1.8" />
+      <module name="shop-service-search-api_test" target="1.8" />
+      <module name="shop-service-search_main" target="1.8" />
+      <module name="shop-service-search_test" target="1.8" />
+      <module name="shop-service-sso-api_main" target="1.8" />
+      <module name="shop-service-sso-api_test" target="1.8" />
+      <module name="shop-service-sso_main" target="1.8" />
+      <module name="shop-service-sso_test" target="1.8" />
+      <module name="shop-web-cart_main" target="1.8" />
+      <module name="shop-web-cart_test" target="1.8" />
+      <module name="shop-web-item_main" target="1.8" />
+      <module name="shop-web-item_test" target="1.8" />
+      <module name="shop-web-order_main" target="1.8" />
+      <module name="shop-web-order_test" target="1.8" />
+      <module name="shop-web-portal_main" target="1.8" />
+      <module name="shop-web-portal_test" target="1.8" />
+      <module name="shop-web-search_main" target="1.8" />
+      <module name="shop-web-search_test" target="1.8" />
+      <module name="shop-web-sso_main" target="1.8" />
+      <module name="shop-web-sso_test" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

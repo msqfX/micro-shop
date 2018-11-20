@@ -29,10 +29,15 @@ public class UserServiceImpl implements UserService {
         UserExample.Criteria criteria = example.createCriteria();
         criteria.andUsernameEqualTo(userName);
         List<User> userList = userMapper.selectByExample(example);
+
         if(!userList.isEmpty()){
             User loginUser = userList.get(0);
             if(!loginUser.getPassword().equals(MD5Util.getMD5Res(passWord))) {
                 return RespResult.build(401,"密码错误");
+            }
+        }else {
+            if(userList.isEmpty()){
+                return RespResult.build(400,"用户不存在");
             }
         }
         //todo 存入reids

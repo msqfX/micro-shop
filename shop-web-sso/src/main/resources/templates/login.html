@@ -209,18 +209,19 @@
         $.ajax({
             url: loginUrl,
             type: "POST",
-            dataType: "text",
+            dataType: "json",
             contentType: "application/x-www-form-urlencoded; charset=utf-8",
             data:{
-                userName:$('#loginname').val(),
-                passWord:$('#nloginpwd').val(),
+                username:$('#loginname').val(),
+                password:$('#nloginpwd').val(),
                 chkRememberMe:$('#autologin').val()
             },
             error: function () {
                 showMesInfo("网络超时，请稍后再试","error");
             },
             success: function (result) {
-                if(result.code == 200){
+                debugger
+                if(result.status == 200){
                     //校验成功后跳转到首页
                     window.location.href = result.data.returnUrl
                 }else {
