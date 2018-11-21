@@ -5,6 +5,7 @@
     <result column="item_id" jdbcType="BIGINT" property="itemId" />
     <result column="created" jdbcType="TIMESTAMP" property="created" />
     <result column="updated" jdbcType="TIMESTAMP" property="updated" />
+    <result column="item_desc" jdbcType="LONGVARCHAR" property="itemDesc" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.shop.pojo.ItemDesc">
     <result column="item_desc" jdbcType="LONGVARCHAR" property="itemDesc" />
@@ -68,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    item_id, created, updated
+    item_id, created, item_desc, updated
   </sql>
   <sql id="Blob_Column_List">
     item_desc

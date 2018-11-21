@@ -1,5 +1,7 @@
 package com.shop.portal;
 
+import com.shop.utils.JedisClient;
+import com.shop.utils.impl.JedisClientSingle;
 import org.beetl.core.resource.WebAppResourceLoader;
 import org.beetl.ext.spring.BeetlGroupUtilConfiguration;
 import org.beetl.ext.spring.BeetlSpringViewResolver;
@@ -58,4 +60,10 @@ public class ShopWebPortalApplication{
         beetlSpringViewResolver.setConfig(beetlGroupUtilConfiguration);
         return beetlSpringViewResolver;
     }
+
+    @Bean
+    public JedisClient jedisClient() {
+        return new JedisClientSingle();
+    }
+
 }

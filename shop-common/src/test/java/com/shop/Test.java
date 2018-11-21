@@ -1,5 +1,6 @@
 package com.shop;
 
+import com.shop.utils.JedisClient;
 import com.shop.utils.JsonUtils;
 import com.shop.utils.MD5Util;
 
@@ -17,4 +18,6 @@ public class Test {
     public void test2(){
         System.out.println(MD5Util.getMD5Res("123456"));
     }
+
+    private JedisClient JedisClientSingle;
 }

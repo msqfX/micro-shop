@@ -1,5 +1,6 @@
 package com.shop.item.controller;
 
+import com.netflix.discovery.converters.Auto;
 import com.shop.item.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -28,7 +29,9 @@ public class ItemController {
     @RequestMapping(value = "getItemById", method = RequestMethod.GET)
     public Object getItemById(@RequestParam String id, Model model){
         Object item = itemService.getItemById(id);
+        Object itemDesc = itemService.getItemDescById(id);
         model.addAttribute("item", item);
+        model.addAttribute("itemDesc", itemDesc);
         return "item";
     }
 

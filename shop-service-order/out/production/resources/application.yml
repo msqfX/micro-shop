@@ -1,8 +1,8 @@
 druid:
-    url: jdbc:mysql://47.107.92.79:3306/shop?characterEncoding=utf-8
+    url: jdbc:mysql://localhost:3306/xbin_store?characterEncoding=utf-8
     driver-class: com.mysql.jdbc.Driver
-    username: Microshop
-    password: microshop123.
+    username: root
+    password: OZo+t9QET+ctzd5Esn9q0GJP5hXtWWIKEsX8c4/w6z4C4AnxrwpvySNgBS89XdazOavjXXZp0oeZtQ3P9lLGEA==
     initial-size: 1
     min-idle: 1
     max-active: 20
@@ -21,7 +21,7 @@ druid:
           enabled: false
           druid-stat-view: /druid/*
           druid-web-stat-filter: /*
-          allow: 47.107.92.79,127.0.0.1
+          allow: 219.230.50.107,127.0.0.1
           deny: 192.168.1.73
           login-username: admin
           login-password: 123456
@@ -31,8 +31,6 @@ mybatis:
     type-aliases-package: cn.binux.pojo
     mapper-locations: classpath:mapper/*.xml
 
-# swagger2
-swagger2.package: cn.shop.service
 
 pagehelper:
     helperDialect: mysql
@@ -40,11 +38,31 @@ pagehelper:
     supportMethodsArguments: true
     params: count=countSql
 
+# swagger2
+swagger2.package: cn.binux.sso.service
+
 # Redis
 redisKey:
-  # 缓存时间 一天
-  expire_time: 86400
+  # 缓存时间 默认半小时
+  expire_time: 1800
   prefix:
-    cart_info_profix: 'CART_INFO:'
-    cart_order_info_profix: 'CART_ORDER_INFO:'
-    cart_order_index_profix: 'CART_ORDER_INDEX:'
+    # 用户登录信息前缀
+    user_session: 'USER_SESSION:'
+    # 验证码Redis前缀
+    verifycode: 'VERIFYCODE:'
+    # 号码code
+    mobile_login_code: 'MOBILE_LOGIN_CODE:'
+
+login:
+  # 验证名
+  validation:
+    #登录名
+    ispinengaged: isPinEngaged
+    #邮箱
+    isemailengaged: isEmailEngaged
+    #手机
+    ismobileengaged: isMobileEngaged
+  # 推荐登录名后缀随机数取值范围
+  random_number: 50000
+  # 登录成功页面
+  success_url: http://localhost:8104/success

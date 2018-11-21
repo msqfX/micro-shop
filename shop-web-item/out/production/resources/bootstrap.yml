@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: shop-web-portal
+    name: shop-web-item
 
   security.basic.enabled: false
 
