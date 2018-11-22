@@ -12,7 +12,14 @@ spring:
   mvc:
     view:
       suffix: .html
-
+  redis:
+    host: 47.107.92.79
+    port: 6379
+    jedis:
+      pool:
+        max-idle: 8
+        max-active: 8
+        max-wait: -1ms
 # 广告Cid
 big_ad_index: 1
 

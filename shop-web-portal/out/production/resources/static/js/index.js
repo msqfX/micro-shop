@@ -26,3 +26,9 @@ $(function(){
 		// 导航左侧栏js效果  end
 		
 	})
+
+function putParentJson(rootJson) {
+	debugger
+	var json = $.parseJSON(rootJson);
+    alert(json[0].name);
+}

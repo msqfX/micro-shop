@@ -5,6 +5,7 @@ import com.shop.common.RespResult;
 import com.shop.pojo.User;
 import com.shop.sso.service.UserService;
 import com.shop.utils.CookieUtil;
+import com.shop.utils.RequestUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -42,7 +43,8 @@ public class UserController {
     @RequestMapping(value = "user/login", method = RequestMethod.POST)
     public @ResponseBody Object login(User user,
                                       HttpServletResponse response, HttpServletRequest request){
-        RespResult result = userService.login(user.getUsername(), user.getPassword());
+        String sessionId = RequestUtil.getSessionId(request, response);
+        RespResult result = userService.login(sessionId, user.getUsername(), user.getPassword());
         Map<String, Object> resultMap = new HashMap<>();
         if(result.getStatus() == Constant.SUCCESS_REQUEST){
             CookieUtil.setCookie(request, response, Constant.TOKEN_LOGIN, user.getUsername());

@@ -120,7 +120,7 @@
                 <%
                 for(root in sortMenuList ){
                 %>
-                <li class="menulihover">
+                <li class="menulihover" onmouseenter="putParentJson('${root.item}')">
                     <i class="listi1"></i>
                     <a href="all-cl.html" target="_blank">${root.name}</a>
                     <span></span>

@@ -114,7 +114,7 @@ project("shop-common") {
     dependencies {
         compileOnly("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
         compileOnly("javax.servlet:javax.servlet-api:${servletapiVersion}")
-        compileOnly("redis.clients:jedis:${jedisVersion}")
+        compile("redis.clients:jedis:${jedisVersion}")
         compile("org.apache.commons:commons-lang3:${commonslang3Version}")
         compile("commons-lang:commons-lang:${commonslangVersion}")
         compile("com.alibaba:fastjson:${fastjsonVersion}")

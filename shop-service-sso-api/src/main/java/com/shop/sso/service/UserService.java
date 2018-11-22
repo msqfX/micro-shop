@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface UserService {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    RespResult login(@RequestParam(value = "userName") String userName, @RequestParam(value = "passWord") String passWord);
+    RespResult login(@RequestParam("sessionId") String sessionId, @RequestParam(value = "userName") String userName,
+                     @RequestParam(value = "passWord") String passWord);
 
 }

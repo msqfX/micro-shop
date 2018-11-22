@@ -21,10 +21,10 @@ public class PortalController {
     @Autowired
     private PortalService portalService;
 
-    @RequestMapping("/{page}")
+    /*@RequestMapping("/{page}")
     public String getPage(@PathVariable String page){
         return page;
-    }
+    }*/
 
     @RequestMapping("/hellobtl")
     public String helloBeetl(Model model){
@@ -39,9 +39,9 @@ public class PortalController {
      * @return
      */
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String index(Model model, HttpServletRequest request){
-        String userName = CookieUtil.getCookieValue(request, Constant.TOKEN_LOGIN);
-        model.addAttribute("userName", userName);
+    public String index(Model model){
+        //String userName = CookieUtil.getCookieValue(request, Constant.TOKEN_LOGIN);
+        //model.addAttribute("userName", userName);
         model.addAttribute("sortMenuList", portalService.getSortMenuList());
         return "index";
     }

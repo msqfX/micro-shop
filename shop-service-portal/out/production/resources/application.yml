@@ -17,6 +17,14 @@ spring:
      validationQuery: "SELECT 'x'"
      testWhileIdle: true
      filters: "stat"
+  redis:
+    host: 47.107.92.79
+    port: 6379
+    jedis:
+      pool:
+        max-idle: 8
+        max-active: 8
+        max-wait: -1ms
 
 mybatis:
     type-aliases-package: com.shop.pojo

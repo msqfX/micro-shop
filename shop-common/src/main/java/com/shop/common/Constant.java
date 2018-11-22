@@ -14,7 +14,9 @@ public class Constant {
     public static final int SUCCESS_REQUEST = 200;
 
     /**cookie 用户登录token*/
-    public static final String TOKEN_LOGIN = "_user";
+    public static final String TOKEN_LOGIN = "USER_SESSION";
+
+
     /**cookie 购物车 key*/
     public static final String CART_KEY = "_cart";
 

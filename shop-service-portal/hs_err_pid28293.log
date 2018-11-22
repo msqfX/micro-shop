@@ -1,0 +1,911 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 121634816 bytes for committing reserved memory.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   In 32 bit mode, the process size limit was hit
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Use 64 bit Java on a 64 bit OS
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_linux.cpp:2640), pid=28293, tid=0x00007f593fefe700
+#
+# JRE version: Java(TM) SE Runtime Environment (8.0_171-b11) (build 1.8.0_171-b11)
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (25.171-b11 mixed mode linux-amd64 compressed oops)
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007f595c157000):  VMThread [stack: 0x00007f593fdff000,0x00007f593feff000] [id=28300]
+
+Stack: [0x00007f593fdff000,0x00007f593feff000],  sp=0x00007f593fefd220,  free space=1016k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0xacfffa]  VMError::report_and_die()+0x2ba
+V  [libjvm.so+0x5005cb]  report_vm_out_of_memory(char const*, int, unsigned long, VMErrorType, char const*)+0x8b
+V  [libjvm.so+0x92dd93]  os::Linux::commit_memory_impl(char*, unsigned long, bool)+0x123
+V  [libjvm.so+0x92dfb9]  os::pd_commit_memory(char*, unsigned long, unsigned long, bool)+0x29
+V  [libjvm.so+0x92527a]  os::commit_memory(char*, unsigned long, unsigned long, bool)+0x2a
+V  [libjvm.so+0x99b223]  PSVirtualSpace::expand_by(unsigned long)+0x53
+V  [libjvm.so+0x99c628]  PSYoungGen::resize_generation(unsigned long, unsigned long)+0xf8
+V  [libjvm.so+0x99b782]  PSYoungGen::resize(unsigned long, unsigned long)+0x22
+V  [libjvm.so+0x998a5b]  PSScavenge::invoke_no_policy()+0xf3b
+V  [libjvm.so+0x993d05]  PSParallelCompact::invoke(bool)+0x85
+V  [libjvm.so+0x487124]  CollectedHeap::collect_as_vm_thread(GCCause::Cause)+0x114
+V  [libjvm.so+0xad1481]  VM_CollectForMetadataAllocation::doit()+0x161
+V  [libjvm.so+0xad9595]  VM_Operation::evaluate()+0x55
+V  [libjvm.so+0xad795a]  VMThread::evaluate_operation(VM_Operation*)+0xba
+V  [libjvm.so+0xad7cde]  VMThread::loop()+0x1ce
+V  [libjvm.so+0xad8150]  VMThread::run()+0x70
+V  [libjvm.so+0x92e0f8]  java_start(Thread*)+0x108
+
+VM_Operation (0x00007f593db22470): CollectForMetadataAllocation, mode: safepoint, requested by thread 0x00007f595d025800
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x00007f595d025800 JavaThread "background-preinit" [_thread_blocked, id=28328, stack(0x00007f593da26000,0x00007f593db27000)]
+  0x00007f595c1dc000 JavaThread "Service Thread" daemon [_thread_blocked, id=28316, stack(0x00007f593ea10000,0x00007f593eb11000)]
+  0x00007f595c1ce800 JavaThread "C1 CompilerThread2" daemon [_thread_blocked, id=28315, stack(0x00007f593ed29000,0x00007f593ee29000)]
+  0x00007f595c1cc800 JavaThread "C2 CompilerThread1" daemon [_thread_blocked, id=28314, stack(0x00007f593ee2a000,0x00007f593ef2a000)]
+  0x00007f595c1ca800 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=28313, stack(0x00007f593ef2b000,0x00007f593f02b000)]
+  0x00007f595c1c9000 JavaThread "Monitor Ctrl-Break" daemon [_thread_in_native, id=28312, stack(0x00007f593f02b000,0x00007f593f12c000)]
+  0x00007f595c195800 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=28311, stack(0x00007f593f12c000,0x00007f593f22d000)]
+  0x00007f595c163000 JavaThread "Finalizer" daemon [_thread_blocked, id=28304, stack(0x00007f593fbfc000,0x00007f593fcfd000)]
+  0x00007f595c15e800 JavaThread "Reference Handler" daemon [_thread_blocked, id=28302, stack(0x00007f593fcfd000,0x00007f593fdfe000)]
+  0x00007f595c014000 JavaThread "main" [_thread_blocked, id=28294, stack(0x00007f5964838000,0x00007f5964938000)]
+
+Other Threads:
+=>0x00007f595c157000 VMThread [stack: 0x00007f593fdff000,0x00007f593feff000] [id=28300]
+  0x00007f595c1e0800 WatcherThread [stack: 0x00007f593e910000,0x00007f593ea10000] [id=28317]
+
+VM state:at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x00007f595c010290] Threads_lock - owner thread: 0x00007f595c157000
+[0x00007f595c010790] Heap_lock - owner thread: 0x00007f595d025800
+
+Heap:
+ PSYoungGen      total 129536K, used 4889K [0x00000000d9400000, 0x00000000e1c00000, 0x0000000100000000)
+  eden space 121344K, 0% used [0x00000000d9400000,0x00000000d9400000,0x00000000e0a80000)
+  from space 8192K, 59% used [0x00000000e0a80000,0x00000000e0f466d0,0x00000000e1280000)
+  to   space 6656K, 0% used [0x00000000e1280000,0x00000000e1280000,0x00000000e1900000)
+ ParOldGen       total 80896K, used 4078K [0x000000008bc00000, 0x0000000090b00000, 0x00000000d9400000)
+  object space 80896K, 5% used [0x000000008bc00000,0x000000008bffb9b0,0x0000000090b00000)
+ Metaspace       used 20721K, capacity 21164K, committed 21296K, reserved 1067008K
+  class space    used 2760K, capacity 2886K, committed 2944K, reserved 1048576K
+
+Card table byte_map: [0x00007f5960f60000,0x00007f5961303000] byte_map_base: 0x00007f5960b02000
+
+Marking Bits: (ParMarkBitMap*) 0x00007f5963cdc280
+ Begin Bits: [0x00007f59445e0000, 0x00007f59462f0000)
+ End Bits:   [0x00007f59462f0000, 0x00007f5948000000)
+
+Polling page: 0x00007f5964957000
+
+CodeCache: size=245760Kb used=5129Kb max_used=5129Kb free=240630Kb
+ bounds [0x00007f594d000000, 0x00007f594d510000, 0x00007f595c000000]
+ total_blobs=1904 nmethods=1530 adapters=287
+ compilation: enabled
+
+Compilation events (10 events):
+Event: 4.890 Thread 0x00007f595c1ce800 1532       3       org.yaml.snakeyaml.scanner.ScannerImpl::stalePossibleSimpleKeys (118 bytes)
+Event: 4.891 Thread 0x00007f595c1ce800 nmethod 1532 0x00007f594d4fedd0 code [0x00007f594d4ff000, 0x00007f594d4ffd78]
+Event: 4.891 Thread 0x00007f595c1ce800 1533       3       org.yaml.snakeyaml.scanner.ScannerImpl::nextPossibleSimpleKey (40 bytes)
+Event: 4.891 Thread 0x00007f595c1ce800 nmethod 1533 0x00007f594d500150 code [0x00007f594d500300, 0x00007f594d500938]
+Event: 4.891 Thread 0x00007f595c1ce800 1530       3       java.util.ArrayList::remove (69 bytes)
+Event: 4.892 Thread 0x00007f595c1ce800 nmethod 1530 0x00007f594d500ad0 code [0x00007f594d500ca0, 0x00007f594d5012a8]
+Event: 4.892 Thread 0x00007f595c1ce800 1534       3       java.util.regex.Pattern$Begin::match (62 bytes)
+Event: 4.892 Thread 0x00007f595c1ce800 nmethod 1534 0x00007f594d5015d0 code [0x00007f594d501760, 0x00007f594d501ac8]
+Event: 4.892 Thread 0x00007f595c1ce800 1535       3       java.lang.Class::createAnnotationData (192 bytes)
+Event: 4.900 Thread 0x00007f595c1ce800 nmethod 1535 0x00007f594d501c50 code [0x00007f594d501f80, 0x00007f594d5034d8]
+
+GC Heap History (10 events):
+Event: 1.634 GC heap after
+Heap after GC invocations=2 (full 0):
+ PSYoungGen      total 35328K, used 2836K [0x00000000d9400000, 0x00000000dbb00000, 0x0000000100000000)
+  eden space 30720K, 0% used [0x00000000d9400000,0x00000000d9400000,0x00000000db200000)
+  from space 4608K, 61% used [0x00000000db680000,0x00000000db9453c8,0x00000000dbb00000)
+  to   space 4608K, 0% used [0x00000000db200000,0x00000000db200000,0x00000000db680000)
+ ParOldGen       total 80896K, used 80K [0x000000008bc00000, 0x0000000090b00000, 0x00000000d9400000)
+  object space 80896K, 0% used [0x000000008bc00000,0x000000008bc14010,0x0000000090b00000)
+ Metaspace       used 7688K, capacity 7866K, committed 7936K, reserved 1056768K
+  class space    used 951K, capacity 978K, committed 1024K, reserved 1048576K
+}
+Event: 2.065 GC heap before
+{Heap before GC invocations=3 (full 0):
+ PSYoungGen      total 35328K, used 33556K [0x00000000d9400000, 0x00000000dbb00000, 0x0000000100000000)
+  eden space 30720K, 100% used [0x00000000d9400000,0x00000000db200000,0x00000000db200000)
+  from space 4608K, 61% used [0x00000000db680000,0x00000000db9453c8,0x00000000dbb00000)
+  to   space 4608K, 0% used [0x00000000db200000,0x00000000db200000,0x00000000db680000)
+ ParOldGen       total 80896K, used 80K [0x000000008bc00000, 0x0000000090b00000, 0x00000000d9400000)
+  object space 80896K, 0% used [0x000000008bc00000,0x000000008bc14010,0x0000000090b00000)
+ Metaspace       used 10270K, capacity 10484K, committed 10624K, reserved 1058816K
+  class space    used 1256K, capacity 1322K, committed 1408K, reserved 1048576K
+Event: 2.073 GC heap after
+Heap after GC invocations=3 (full 0):
+ PSYoungGen      total 35328K, used 4152K [0x00000000d9400000, 0x00000000dd900000, 0x0000000100000000)
+  eden space 30720K, 0% used [0x00000000d9400000,0x00000000d9400000,0x00000000db200000)
+  from space 4608K, 90% used [0x00000000db200000,0x00000000db60e188,0x00000000db680000)
+  to   space 4608K, 0% used [0x00000000dd480000,0x00000000dd480000,0x00000000dd900000)
+ ParOldGen       total 80896K, used 88K [0x000000008bc00000, 0x0000000090b00000, 0x00000000d9400000)
+  object space 80896K, 0% used [0x000000008bc00000,0x000000008bc16010,0x0000000090b00000)
+ Metaspace       used 10270K, capacity 10484K, committed 10624K, reserved 1058816K
+  class space    used 1256K, capacity 1322K, committed 1408K, reserved 1048576K
+}
+Event: 2.678 GC heap before
+{Heap before GC invocations=4 (full 0):
+ PSYoungGen      total 35328K, used 34872K [0x00000000d9400000, 0x00000000dd900000, 0x0000000100000000)
+  eden space 30720K, 100% used [0x00000000d9400000,0x00000000db200000,0x00000000db200000)
+  from space 4608K, 90% used [0x00000000db200000,0x00000000db60e188,0x00000000db680000)
+  to   space 4608K, 0% used [0x00000000dd480000,0x00000000dd480000,0x00000000dd900000)
+ ParOldGen       total 80896K, used 88K [0x000000008bc00000, 0x0000000090b00000, 0x00000000d9400000)
+  object space 80896K, 0% used [0x000000008bc00000,0x000000008bc16010,0x0000000090b00000)
+ Metaspace       used 11969K, capacity 12290K, committed 12416K, reserved 1060864K
+  class space    used 1488K, capacity 1575K, committed 1664K, reserved 1048576K
+Event: 2.688 GC heap after
+Heap after GC invocations=4 (full 0):
+ PSYoungGen      total 66048K, used 4451K [0x00000000d9400000, 0x00000000dd900000, 0x0000000100000000)
+  eden space 61440K, 0% used [0x00000000d9400000,0x00000000d9400000,0x00000000dd000000)
+  from space 4608K, 96% used [0x00000000dd480000,0x00000000dd8d8f28,0x00000000dd900000)
+  to   space 4608K, 0% used [0x00000000dd000000,0x00000000dd000000,0x00000000dd480000)
+ ParOldGen       total 80896K, used 96K [0x000000008bc00000, 0x0000000090b00000, 0x00000000d9400000)
+  object space 80896K, 0% used [0x000000008bc00000,0x000000008bc18010,0x0000000090b00000)
+ Metaspace       used 11969K, capacity 12290K, committed 12416K, reserved 1060864K
+  class space    used 1488K, capacity 1575K, committed 1664K, reserved 1048576K
+}
+Event: 3.809 GC heap before
+{Heap before GC invocations=5 (full 0):
+ PSYoungGen      total 66048K, used 65891K [0x00000000d9400000, 0x00000000dd900000, 0x0000000100000000)
+  eden space 61440K, 100% used [0x00000000d9400000,0x00000000dd000000,0x00000000dd000000)
+  from space 4608K, 96% used [0x00000000dd480000,0x00000000dd8d8f28,0x00000000dd900000)
+  to   space 4608K, 0% used [0x00000000dd000000,0x00000000dd000000,0x00000000dd480000)
+ ParOldGen       total 80896K, used 96K [0x000000008bc00000, 0x0000000090b00000, 0x00000000d9400000)
+  object space 80896K, 0% used [0x000000008bc00000,0x000000008bc18010,0x0000000090b00000)
+ Metaspace       used 15488K, capacity 15816K, committed 16000K, reserved 1062912K
+  class space    used 1958K, capacity 2058K, committed 2176K, reserved 1048576K
+Event: 3.823 GC heap after
+Heap after GC invocations=5 (full 0):
+ PSYoungGen      total 66048K, used 4583K [0x00000000d9400000, 0x00000000e1900000, 0x0000000100000000)
+  eden space 61440K, 0% used [0x00000000d9400000,0x00000000d9400000,0x00000000dd000000)
+  from space 4608K, 99% used [0x00000000dd000000,0x00000000dd479d58,0x00000000dd480000)
+  to   space 6656K, 0% used [0x00000000e1280000,0x00000000e1280000,0x00000000e1900000)
+ ParOldGen       total 80896K, used 1590K [0x000000008bc00000, 0x0000000090b00000, 0x00000000d9400000)
+  object space 80896K, 1% used [0x000000008bc00000,0x000000008bd8da78,0x0000000090b00000)
+ Metaspace       used 15488K, capacity 15816K, committed 16000K, reserved 1062912K
+  class space    used 1958K, capacity 2058K, committed 2176K, reserved 1048576K
+}
+Event: 4.350 GC heap before
+{Heap before GC invocations=6 (full 0):
+ PSYoungGen      total 66048K, used 66023K [0x00000000d9400000, 0x00000000e1900000, 0x0000000100000000)
+  eden space 61440K, 100% used [0x00000000d9400000,0x00000000dd000000,0x00000000dd000000)
+  from space 4608K, 99% used [0x00000000dd000000,0x00000000dd479d58,0x00000000dd480000)
+  to   space 6656K, 0% used [0x00000000e1280000,0x00000000e1280000,0x00000000e1900000)
+ ParOldGen       total 80896K, used 1590K [0x000000008bc00000, 0x0000000090b00000, 0x00000000d9400000)
+  object space 80896K, 1% used [0x000000008bc00000,0x000000008bd8da78,0x0000000090b00000)
+ Metaspace       used 18514K, capacity 18882K, committed 19200K, reserved 1067008K
+  class space    used 2372K, capacity 2479K, committed 2560K, reserved 1048576K
+Event: 4.365 GC heap after
+Heap after GC invocations=6 (full 0):
+ PSYoungGen      total 128000K, used 6639K [0x00000000d9400000, 0x00000000e1c00000, 0x0000000100000000)
+  eden space 121344K, 0% used [0x00000000d9400000,0x00000000d9400000,0x00000000e0a80000)
+  from space 6656K, 99% used [0x00000000e1280000,0x00000000e18fbdd0,0x00000000e1900000)
+  to   space 8192K, 0% used [0x00000000e0a80000,0x00000000e0a80000,0x00000000e1280000)
+ ParOldGen       total 80896K, used 2097K [0x000000008bc00000, 0x0000000090b00000, 0x00000000d9400000)
+  object space 80896K, 2% used [0x000000008bc00000,0x000000008be0c718,0x0000000090b00000)
+ Metaspace       used 18514K, capacity 18882K, committed 19200K, reserved 1067008K
+  class space    used 2372K, capacity 2479K, committed 2560K, reserved 1048576K
+}
+Event: 4.906 GC heap before
+{Heap before GC invocations=7 (full 0):
+ PSYoungGen      total 128000K, used 94524K [0x00000000d9400000, 0x00000000e1c00000, 0x0000000100000000)
+  eden space 121344K, 72% used [0x00000000d9400000,0x00000000de9d3578,0x00000000e0a80000)
+  from space 6656K, 99% used [0x00000000e1280000,0x00000000e18fbdd0,0x00000000e1900000)
+  to   space 8192K, 0% used [0x00000000e0a80000,0x00000000e0a80000,0x00000000e1280000)
+ ParOldGen       total 80896K, used 2097K [0x000000008bc00000, 0x0000000090b00000, 0x00000000d9400000)
+  object space 80896K, 2% used [0x000000008bc00000,0x000000008be0c718,0x0000000090b00000)
+ Metaspace       used 20721K, capacity 21164K, committed 21296K, reserved 1067008K
+  class space    used 2760K, capacity 2886K, committed 2944K, reserved 1048576K
+
+Deoptimization events (10 events):
+Event: 2.496 Thread 0x00007f595c014000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007f594d344ca4 method=java.util.HashMap.putVal(ILjava/lang/Object;Ljava/lang/Object;ZZ)Ljava/lang/Object; @ 253
+Event: 2.658 Thread 0x00007f595c014000 Uncommon trap: reason=range_check action=make_not_entrant pc=0x00007f594d361880 method=sun.reflect.generics.parser.SignatureParser.current()C @ 34
+Event: 2.949 Thread 0x00007f595c014000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007f594d34b5d4 method=java.util.HashMap.hash(Ljava/lang/Object;)I @ 1
+Event: 2.949 Thread 0x00007f595c014000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007f594d33eca8 method=java.util.HashMap.hash(Ljava/lang/Object;)I @ 1
+Event: 4.220 Thread 0x00007f595c014000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007f594d344ca4 method=java.util.HashMap.putVal(ILjava/lang/Object;Ljava/lang/Object;ZZ)Ljava/lang/Object; @ 253
+Event: 4.296 Thread 0x00007f595c014000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007f594d344ca4 method=java.util.HashMap.putVal(ILjava/lang/Object;Ljava/lang/Object;ZZ)Ljava/lang/Object; @ 253
+Event: 4.300 Thread 0x00007f595c014000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007f594d344ca4 method=java.util.HashMap.putVal(ILjava/lang/Object;Ljava/lang/Object;ZZ)Ljava/lang/Object; @ 253
+Event: 4.338 Thread 0x00007f595c014000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007f594d436614 method=java.util.jar.Manifest$FastInputStream.readLine([BII)I @ 87
+Event: 4.350 Thread 0x00007f595d025800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007f594d4379dc method=java.util.concurrent.ConcurrentHashMap.addCount(JI)V @ 272
+Event: 4.702 Thread 0x00007f595c014000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007f594d3046f0 method=java.net.URLStreamHandler.parseURL(Ljava/net/URL;Ljava/lang/String;II)V @ 717
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (10 events):
+Event: 2.659 Thread 0x00007f595c014000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException': 182> (0x00000000db0dec58) thrown at [/HUDSON/workspace/8-2-build-linux-amd64/jdk8u171/10807/hotspot/src/share/vm/interpreter/interpreterRuntime.cpp, line 366]
+Event: 2.660 Thread 0x00007f595c014000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException': 60> (0x00000000db0e1000) thrown at [/HUDSON/workspace/8-2-build-linux-amd64/jdk8u171/10807/hotspot/src/share/vm/interpreter/interpreterRuntime.cpp, line 366]
+Event: 2.949 Thread 0x00007f595c014000 Implicit null exception at 0x00007f594d34ae5b to 0x00007f594d34b5b9
+Event: 2.949 Thread 0x00007f595c014000 Implicit null exception at 0x00007f594d33ec2f to 0x00007f594d33ec99
+Event: 3.274 Thread 0x00007f595c014000 Exception <a 'java/lang/NoSuchMethodError': java.lang.Object.lambda$identity$2(Ljava/lang/Object;)Ljava/lang/Object;> (0x00000000dae62f80) thrown at [/HUDSON/workspace/8-2-build-linux-amd64/jdk8u171/10807/hotspot/src/share/vm/interpreter/linkResolver.cpp,
+Event: 3.286 Thread 0x00007f595c014000 Exception <a 'java/lang/NoSuchMethodError': java.lang.Object.lambda$static$0(CI)C> (0x00000000daeb0780) thrown at [/HUDSON/workspace/8-2-build-linux-amd64/jdk8u171/10807/hotspot/src/share/vm/interpreter/linkResolver.cpp, line 620]
+Event: 3.288 Thread 0x00007f595c014000 Exception <a 'java/lang/NoSuchMethodError': java.lang.Object.lambda$static$1(CI)C> (0x00000000daeb33d0) thrown at [/HUDSON/workspace/8-2-build-linux-amd64/jdk8u171/10807/hotspot/src/share/vm/interpreter/linkResolver.cpp, line 620]
+Event: 4.452 Thread 0x00007f595c014000 Exception <a 'java/lang/NoSuchMethodError': java.lang.Object.lambda$chars$0()Ljava/util/Spliterator$OfInt;> (0x00000000d9cea470) thrown at [/HUDSON/workspace/8-2-build-linux-amd64/jdk8u171/10807/hotspot/src/share/vm/interpreter/linkResolver.cpp, line 620]
+Event: 4.702 Thread 0x00007f595c014000 Implicit null exception at 0x00007f594d30158c to 0x00007f594d3046b5
+Event: 4.718 Thread 0x00007f595d025800 Exception <a 'java/lang/NoSuchMethodError': java.lang.Object.forClass(Ljava/lang/Class;)Lorg/hibernate/validator/internal/engine/constraintvalidation/ConstraintValidatorDescriptor;> (0x00000000db14e388) thrown at [/HUDSON/workspace/8-2-build-linux-amd64/j
+
+Events (10 events):
+Event: 4.899 loading class org/hibernate/validator/internal/constraintvalidators/bv/size/SizeValidatorForMap
+Event: 4.899 loading class org/hibernate/validator/internal/constraintvalidators/bv/size/SizeValidatorForMap done
+Event: 4.900 loading class org/hibernate/validator/internal/constraintvalidators/bv/size/SizeValidatorForArraysOfBoolean
+Event: 4.900 loading class org/hibernate/validator/internal/constraintvalidators/bv/size/SizeValidatorForArraysOfBoolean done
+Event: 4.900 loading class java/util/TreeMap$DescendingSubMap
+Event: 4.901 loading class java/util/TreeMap$NavigableSubMap
+Event: 4.903 loading class java/util/TreeMap$NavigableSubMap done
+Event: 4.903 loading class java/util/TreeMap$DescendingSubMap done
+Event: 4.904 loading class java/util/Collections$ReverseComparator
+Event: 4.904 Executing VM operation: CollectForMetadataAllocation
+
+
+Dynamic libraries:
+00400000-00401000 r-xp 00000000 08:01 9044066                            /home/lizy/公共的/local/java/jdk1.8.0_171/bin/java
+00600000-00601000 rw-p 00000000 08:01 9044066                            /home/lizy/公共的/local/java/jdk1.8.0_171/bin/java
+0182c000-0184d000 rw-p 00000000 00:00 0                                  [heap]
+8bc00000-90b00000 rw-p 00000000 00:00 0 
+90b00000-d9400000 ---p 00000000 00:00 0 
+d9400000-e1c00000 rw-p 00000000 00:00 0 
+e9000000-100000000 ---p 00000000 00:00 0 
+100000000-1002e0000 rw-p 00000000 00:00 0 
+1002e0000-140000000 ---p 00000000 00:00 0 
+7f58fc000000-7f58fc021000 rw-p 00000000 00:00 0 
+7f58fc021000-7f5900000000 ---p 00000000 00:00 0 
+7f5904000000-7f5904021000 rw-p 00000000 00:00 0 
+7f5904021000-7f5908000000 ---p 00000000 00:00 0 
+7f5908000000-7f59080f0000 rw-p 00000000 00:00 0 
+7f59080f0000-7f590c000000 ---p 00000000 00:00 0 
+7f590c000000-7f590c021000 rw-p 00000000 00:00 0 
+7f590c021000-7f5910000000 ---p 00000000 00:00 0 
+7f5910000000-7f591033a000 rw-p 00000000 00:00 0 
+7f591033a000-7f5914000000 ---p 00000000 00:00 0 
+7f5914fff000-7f5918000000 rw-p 00000000 00:00 0 
+7f5918000000-7f59186e3000 rw-p 00000000 00:00 0 
+7f59186e3000-7f591c000000 ---p 00000000 00:00 0 
+7f591c000000-7f591c47f000 rw-p 00000000 00:00 0 
+7f591c47f000-7f5920000000 ---p 00000000 00:00 0 
+7f5920000000-7f5920021000 rw-p 00000000 00:00 0 
+7f5920021000-7f5924000000 ---p 00000000 00:00 0 
+7f5924000000-7f5924021000 rw-p 00000000 00:00 0 
+7f5924021000-7f5928000000 ---p 00000000 00:00 0 
+7f5928000000-7f5928021000 rw-p 00000000 00:00 0 
+7f5928021000-7f592c000000 ---p 00000000 00:00 0 
+7f592c000000-7f592c021000 rw-p 00000000 00:00 0 
+7f592c021000-7f5930000000 ---p 00000000 00:00 0 
+7f5930000000-7f5930021000 rw-p 00000000 00:00 0 
+7f5930021000-7f5934000000 ---p 00000000 00:00 0 
+7f5934000000-7f5934290000 rw-p 00000000 00:00 0 
+7f5934290000-7f5938000000 ---p 00000000 00:00 0 
+7f5938000000-7f5938021000 rw-p 00000000 00:00 0 
+7f5938021000-7f593c000000 ---p 00000000 00:00 0 
+7f593d04d000-7f593d064000 r-xp 00000000 08:01 4592360                    /lib/x86_64-linux-gnu/libresolv-2.27.so
+7f593d064000-7f593d264000 ---p 00017000 08:01 4592360                    /lib/x86_64-linux-gnu/libresolv-2.27.so
+7f593d264000-7f593d265000 r--p 00017000 08:01 4592360                    /lib/x86_64-linux-gnu/libresolv-2.27.so
+7f593d265000-7f593d266000 rw-p 00018000 08:01 4592360                    /lib/x86_64-linux-gnu/libresolv-2.27.so
+7f593d266000-7f593d268000 rw-p 00000000 00:00 0 
+7f593d268000-7f593d26d000 r-xp 00000000 08:01 4592309                    /lib/x86_64-linux-gnu/libnss_dns-2.27.so
+7f593d26d000-7f593d46d000 ---p 00005000 08:01 4592309                    /lib/x86_64-linux-gnu/libnss_dns-2.27.so
+7f593d46d000-7f593d46e000 r--p 00005000 08:01 4592309                    /lib/x86_64-linux-gnu/libnss_dns-2.27.so
+7f593d46e000-7f593d46f000 rw-p 00006000 08:01 4592309                    /lib/x86_64-linux-gnu/libnss_dns-2.27.so
+7f593d46f000-7f593d471000 r-xp 00000000 08:01 4592317                    /lib/x86_64-linux-gnu/libnss_mdns4_minimal.so.2
+7f593d471000-7f593d670000 ---p 00002000 08:01 4592317                    /lib/x86_64-linux-gnu/libnss_mdns4_minimal.so.2
+7f593d670000-7f593d671000 r--p 00001000 08:01 4592317                    /lib/x86_64-linux-gnu/libnss_mdns4_minimal.so.2
+7f593d671000-7f593d672000 rw-p 00002000 08:01 4592317                    /lib/x86_64-linux-gnu/libnss_mdns4_minimal.so.2
+7f593d690000-7f593d725000 r--s 0110b000 08:01 9045665                    /home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/ext/jfxrt.jar
+7f593d725000-7f593d728000 ---p 00000000 00:00 0 
+7f593d728000-7f593da12000 rw-p 00000000 00:00 0 
+7f593da12000-7f593da26000 ---p 00000000 00:00 0 
+7f593da26000-7f593da29000 ---p 00000000 00:00 0 
+7f593da29000-7f593dd27000 rw-p 00000000 00:00 0 
+7f593dd27000-7f593df27000 rw-p 00000000 00:00 0 
+7f593df27000-7f593e127000 rw-p 00000000 00:00 0 
+7f593e127000-7f593e138000 r-xp 00000000 08:01 9045822                    /home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/amd64/libnio.so
+7f593e138000-7f593e337000 ---p 00011000 08:01 9045822                    /home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/amd64/libnio.so
+7f593e337000-7f593e338000 rw-p 00010000 08:01 9045822                    /home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/amd64/libnio.so
+7f593e338000-7f593e538000 rw-p 00000000 00:00 0 
+7f593e538000-7f593e542000 r--s 00116000 08:01 9045671                    /home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/ext/localedata.jar
+7f593e542000-7f593e55e000 r--s 00393000 08:01 9045664                    /home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/ext/cldrdata.jar
+7f593e55e000-7f593e55f000 r--s 00000000 08:01 8143782                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/net.jcip/jcip-annotations/1.0/afba4942caaeaf46aab0b976afd57cc7c181467e/jcip-annotations-1.0.jar
+7f593e55f000-7f593e560000 r--s 00001000 08:01 8143591                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.esotericsoftware/minlog/1.3.0/ff07b5f1b01d2f92bb00a337f9a94873712f0827/minlog-1.3.0.jar
+7f593e560000-7f593e562000 r--s 0000f000 08:01 8143044                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.jboss.logging/jboss-logging/3.3.2.Final/3789d00e859632e6c6206adc0c71625559e6e3b0/jboss-logging-3.3.2.Final.jar
+7f593e562000-7f593e567000 r--s 00012000 08:01 8143042                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/javax.validation/validation-api/2.0.1.Final/cb855558e6271b1b32e716d24cb85c7f583ce09e/validation-api-2.0.1.Final.jar
+7f593e567000-7f593e56c000 r--s 00068000 08:01 8139127                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/antlr/antlr/2.7.7/83cd2cd674a217ade95a4bb83a8a14f351f48bd0/antlr-2.7.7.jar
+7f593e56c000-7f593e56f000 r--s 00022000 08:01 8139126                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.antlr/stringtemplate/3.2.1/59ec8083721eae215c6f3caee944c410d2be34de/stringtemplate-3.2.1.jar
+7f593e56f000-7f593e570000 r--s 0000a000 08:01 8138755                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-juli/8.5.16/e9e65481ee92eaf7dace280320f28139d485c958/tomcat-juli-8.5.16.jar
+7f593e570000-7f593e574000 r--s 00027000 08:01 8143784                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/commons-io/commons-io/2.2/83b5b8a7ba1c08f9e8c8ff2373724e33d3c1e22a/commons-io-2.2.jar
+7f593e574000-7f593e57a000 r--s 00039000 08:01 8143056                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-api/2.10.0/fec5797a55b786184a537abd39c3fa1449d752d6/log4j-api-2.10.0.jar
+7f593e57a000-7f593e585000 r--s 00069000 08:01 8143052                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/ch.qos.logback/logback-core/1.2.3/864344400c3d4d92dfeb0a305dc87d953677c03c/logback-core-1.2.3.jar
+7f593e585000-7f593e589000 r--s 00037000 08:01 8143589                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-el/8.5.29/893fb2c87ec1aa248a7911d76c0c06b3fca6bc9b/tomcat-embed-el-8.5.29.jar
+7f593e589000-7f593e58d000 r--s 00025000 08:01 8139117                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.antlr/antlr-runtime/3.4/8f011408269a8e42b8548687e137d8eeb56df4b4/antlr-runtime-3.4.jar
+7f593e58d000-7f593e59c000 r--s 0007f000 08:01 8139112                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/joda-time/joda-time/2.3/56498efd17752898cfcc3868c1b6211a07b12b8f/joda-time-2.3.jar
+7f593e59c000-7f593e5a2000 r--s 00044000 08:01 8139118                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/commons-jxpath/commons-jxpath/1.3/c22d7d0f0f40eb7059a23cfa61773a416768b137/commons-jxpath-1.3.jar
+7f593e5a2000-7f593e5fa000 r--s 003a7000 08:01 8143036                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.bouncycastle/bcprov-jdk15on/1.60/bd47ad3bd14b8e82595c7adaa143501e60842a84/bcprov-jdk15on-1.60.jar
+7f593e5fa000-7f593e5fd000 r--s 00021000 08:01 8138753                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-jdbc/8.5.16/c4b7a82f4f4276f0c76e9db11fb2653e6582bfb3/tomcat-jdbc-8.5.16.jar
+7f593e5fd000-7f593e600000 r--s 0000f000 08:01 8143781                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/commons-fileupload/commons-fileupload/1.3.3/4ff14d809195b711fd6bcc87e6777f886730ca1/commons-fileupload-1.3.3.jar
+7f593e600000-7f593e604000 r--s 00019000 08:01 8143586                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.aspectj/aspectjrt/1.8.13/bfc5a877fd80648e5467239d370735654aaf7a92/aspectjrt-1.8.13.jar
+7f593e604000-7f593e611000 r--s 00083000 08:01 8143039                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/commons-collections/commons-collections/3.2.2/8ad72fe39fa8c91eaaf12aadb21e0c3661fe26d5/commons-collections-3.2.2.jar
+7f593e611000-7f593e615000 r--s 00024000 08:01 8139095                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.codehaus.woodstox/stax2-api/3.1.4/ac19014b1e6a7c08aad07fe114af792676b685b7/stax2-api-3.1.4.jar
+7f593e615000-7f593e617000 r--s 00004000 08:01 8139115                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/javax.xml.stream/stax-api/1.0-2/d6337b0de8b25e53e81b922352fbea9f9f57ba0b/stax-api-1.0-2.jar
+7f593e617000-7f593e619000 r--s 0000e000 08:01 8138758                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/commons-logging/commons-logging/1.2/4bfc12adfe4842bf07b657f0369c4cb522955686/commons-logging-1.2.jar
+7f593e619000-7f593e61e000 r--s 00024000 08:01 8143053                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.github.andrewoma.dexx/dexx-collections/0.2/a1cff10827ee471c215a99585b99f00d3a602194/dexx-collections-0.2.jar
+7f593e61e000-7f593e625000 r--s 0003a000 08:01 8143048                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/commons-codec/commons-codec/1.9/9ce04e34240f674bc72680f8b843b1457383161a/commons-codec-1.9.jar
+7f593e625000-7f593e62d000 r--s 00048000 08:01 8143047                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.apache.httpcomponents/httpcore/4.4.6/e3fd8ced1f52c7574af952e2e6da0df8df08eb82/httpcore-4.4.6.jar
+7f593e62d000-7f593e62f000 r--s 00003000 08:01 8139094                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/3.0.1/f7be08ec23c21485b9b5a1cf1654c2ec8c58168d/jsr305-3.0.1.jar
+7f593e62f000-7f593e632000 r--s 00007000 08:01 8143780                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.google.code.findbugs/annotations/3.0.1/fc019a2216218990d64dfe756e7aa20f0069dea2/annotations-3.0.1.jar
+7f593e632000-7f593e633000 r--s 00004000 08:01 8143779                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.github.openfeign.form/feign-form/3.3.0/147b40d373999606dce20ace692006f86d34a6fb/feign-form-3.3.0.jar
+7f593e633000-7f593e646000 r--s 000df000 08:01 8139109                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.apache.commons/commons-math/2.2/4877b85d388275f994a5cfc7eceb73a8045d3006/commons-math-2.2.jar
+7f593e646000-7f593e648000 r--s 00005000 08:01 8139108                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/stax/stax-api/1.0.1/49c100caf72d658aca8e58bd74a4ba90fa2b0d70/stax-api-1.0.1.jar
+7f593e648000-7f593e65b000 r--s 000b0000 08:01 8143015                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.bouncycastle/bcpkix-jdk15on/1.60/d0c46320fbc07be3a24eb13a56cee4e3d38e0c75/bcpkix-jdk15on-1.60.jar
+7f593e65b000-7f593e662000 r--s 00052000 08:01 8138754                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.github.jsqlparser/jsqlparser/1.0/63d49424a53ea8ca17a58e291694d5b4a60256ee/jsqlparser-1.0.jar
+7f593e662000-7f593e664000 r--s 00010000 08:01 8143013                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.security/spring-security-crypto/5.0.9.RELEASE/50cc3e212645b95494a14b6e71800c4b1f3de131/spring-security-crypto-5.0.9.RELEASE.jar
+7f593e664000-7f593e665000 r--s 00003000 08:01 8138600                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.mapstruct/mapstruct/1.0.0.Final/794bb2c7d3dd69211deb22857d92fb4c5361be3f/mapstruct-1.0.0.Final.jar
+7f593e665000-7f593e667000 r--s 0000e000 08:01 8143043                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.fasterxml/classmate/1.3.4/3d5f48f10bbe4eb7bd862f10c0583be2e0053c6/classmate-1.3.4.jar
+7f593e667000-7f593e684000 r--s 000f8000 08:01 8143585                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.hibernate.validator/hibernate-validator/6.0.9.Final/b149e4cce82379f11f6129eb3187ca8ae5404005/hibernate-validator-6.0.9.Final.jar
+7f593e684000-7f593e685000 r--s 00004000 08:01 8138599                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.swagger/swagger-annotations/1.5.10/246ec68bce560227d3633d5ab5979437544bd6dc/swagger-annotations-1.5.10.jar
+7f593e685000-7f593e688000 r--s 00018000 08:01 8138603                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.apache.commons/commons-pool2/2.3/62a559a025fd890c30364296ece14643ba9c8c5b/commons-pool2-2.3.jar
+7f593e688000-7f593e68a000 r--s 00004000 08:01 8138528                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework/spring-jcl/5.0.10.RELEASE/8d6a766be91ae5613f2828eb9f77739a47ceb357/spring-jcl-5.0.10.RELEASE.jar
+7f593e68a000-7f593e68b000 r--s 00004000 08:01 8143267                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.vaadin.external.google/android-json/0.0.20131108.vaadin1/fa26d351fe62a6a17f5cda1287c1c6110dec413f/android-json-0.0.20131108.vaadin1.jar
+7f593e68b000-7f593e68d000 r--s 0000c000 08:01 8143266                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.objenesis/objenesis/2.6/639033469776fd37c08358c6b92a4761feb2af4b/objenesis-2.6.jar
+7f593e68d000-7f593e694000 r--s 00051000 08:01 8143590                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.esotericsoftware/kryo-shaded/3.0.3/977d6b42d82de551fcf77dad84ef06c2839e3a74/kryo-shaded-3.0.3.jar
+7f593e694000-7f593e696000 r--s 00009000 08:01 8143265                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.7.9/a6c65f9da7f467ee1f02ff2841ffd3155aee2fc9/byte-buddy-agent-1.7.9.jar
+7f593e696000-7f593e6d2000 r--s 0028e000 08:01 8143263                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy/1.7.9/51218a01a882c04d0aba8c028179cce488bbcb58/byte-buddy-1.7.9.jar
+7f593e6d2000-7f593e6de000 r--s 00081000 08:01 8143275                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.netty/netty-common/4.1.24.Final/7eeecd7906543214c3c1c984d275d3c6de10b99d/netty-common-4.1.24.Final.jar
+7f593e6de000-7f593e6df000 r--s 00007000 08:01 8143274                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.netty/netty-resolver/4.1.24.Final/dbc1e5b50d31aed883ea3beeb6489e1977d0687f/netty-resolver-4.1.24.Final.jar
+7f593e6df000-7f593e6e3000 r--s 0003f000 08:01 8143273                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.netty/netty-buffer/4.1.24.Final/e354bed2e60b568307138e403f55ba241c1c16d2/netty-buffer-4.1.24.Final.jar
+7f593e6e3000-7f593e6ec000 r--s 00067000 08:01 8143272                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.netty/netty-transport/4.1.24.Final/d37292c94d3a4cba48d9b6cfb6e8e55282035d0d/netty-transport-4.1.24.Final.jar
+7f593e6ec000-7f593e6ee000 r--s 00006000 08:01 8143584                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.netty/netty-transport-native-unix-common/4.1.16.Final/8acbda23f39f60478bb73ea7c86e9fe121c13f7b/netty-transport-native-unix-common-4.1.16.Final.jar
+7f593e6ee000-7f593e6f1000 r--s 0001a000 08:01 8143583                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.netty/netty-transport-native-epoll/4.1.16.Final/d3d29837ecb6dc549cc37f9daf6b14bc6cd6c898/netty-transport-native-epoll-4.1.16.Final.jar
+7f593e6f1000-7f593e6f8000 r--s 00047000 08:01 8143271                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.netty/netty-codec/4.1.24.Final/290857e5103956bbda11836e33245f2439226b77/netty-codec-4.1.24.Final.jar
+7f593e6f8000-7f593e6fc000 r--s 0001a000 08:01 8143582                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.netty/netty-codec-socks/4.1.16.Final/f42aabfb1dcae4eaf1700f2c2d047eab3c1b8523/netty-codec-socks-4.1.16.Final.jar
+7f593e6fc000-7f593e707000 r--s 0007c000 08:01 8143581                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.netty/netty-codec-http/4.1.16.Final/d64312378b438dfdad84267c599a053327c6f02a/netty-codec-http-4.1.16.Final.jar
+7f593e707000-7f593e709000 r--s 00004000 08:01 8143580                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.netty/netty-handler-proxy/4.1.16.Final/e3007ed3368748ccdc35c1f38c7d6c089768373a/netty-handler-proxy-4.1.16.Final.jar
+7f593e709000-7f593e710000 r--s 00055000 08:01 8143270                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.netty/netty-handler/4.1.24.Final/bad56e7da211c5ebe031ae155cb648b1065c7bb6/netty-handler-4.1.24.Final.jar
+7f593e710000-7f593e717000 r--s 00042000 08:01 8143014                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.yaml/snakeyaml/1.19/2d998d3d674b172a588e54ab619854d073f555b5/snakeyaml-1.19.jar
+7f593e717000-7f593e719000 r--s 00005000 08:01 8143008                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/javax.annotation/javax.annotation-api/1.3.2/934c04d3cfef185a8008e7bf34331b79730a9d43/javax.annotation-api-1.3.2.jar
+7f593e719000-7f593e71b000 r--s 00000000 08:01 8138611                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/aopalliance/aopalliance/1.0/235ba8b489512805ac13a8f9ea77a1ca5ebe3e8/aopalliance-1.0.jar
+7f593e71b000-7f593e71c000 r--s 00000000 08:01 8139039                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/javax.inject/javax.inject/1/6975da39a7040257bd51d21a231b76c915872d38/javax.inject-1.jar
+7f593e71c000-7f593e721000 r--s 00034000 08:01 8143576                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.google.code.gson/gson/2.8.0/c4ba5371a29ac9b2ad6129b1d39ea38750043eff/gson-2.8.0.jar
+7f593e721000-7f593e722000 r--s 00000000 08:01 8143281                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.reactivestreams/reactive-streams/1.0.2/323964c36556eb0e6209f65c1cef72b53b461ab8/reactive-streams-1.0.2.jar
+7f593e722000-7f593e735000 r--s 00132000 08:01 8143269                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.projectreactor/reactor-core/3.1.6.RELEASE/64dfad0f0a0e9022c949d678106d53f083b66d05/reactor-core-3.1.6.RELEASE.jar
+7f593e735000-7f593e73a000 r--s 00039000 08:01 8143575                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.projectreactor.ipc/reactor-netty/0.7.1.RELEASE/2fab80d0847e43d36e8f721d4e8416a490bc5348/reactor-netty-0.7.1.RELEASE.jar
+7f593e73a000-7f593e766000 r--s 00208000 08:01 8143038                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.google.guava/guava/19.0/6ce200f6b23222af3d8abb6b6459e6c44f4bb0e9/guava-19.0.jar
+7f593e766000-7f593e77f000 r--s 001bf000 08:01 8143050                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.aspectj/aspectjweaver/1.8.13/ad94df2a28d658a40dc27bbaff6a1ce5fbf04e9b/aspectjweaver-1.8.13.jar
+7f593e77f000-7f593e781000 r--s 0000c000 08:01 8139113                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.ow2.asm/asm/5.0.4/da08b8cce7bbf903602a25a3a163ae252435795/asm-5.0.4.jar
+7f593e781000-7f593e783000 r--s 00006000 08:01 8143276                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/net.minidev/accessors-smart/1.2/c592b500269bfde36096641b01238a8350f8aa31/accessors-smart-1.2.jar
+7f593e783000-7f593e786000 r--s 0001b000 08:01 8143264                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/net.minidev/json-smart/2.3/7396407491352ce4fa30de92efb158adb76b5b/json-smart-2.3.jar
+7f593e786000-7f593e788000 r--s 0001a000 08:01 8143573                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.hdrhistogram/HdrHistogram/2.1.9/e4631ce165eb400edecfa32e03d3f1be53dee754/HdrHistogram-2.1.9.jar
+7f593e788000-7f593e78c000 r--s 0002f000 08:01 8143570                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.zipkin.zipkin2/zipkin/2.10.4/d4ee3350a353dace7168590d19a0347a5a97098e/zipkin-2.10.4.jar
+7f593e78c000-7f593e78e000 r--s 00007000 08:01 8143568                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.zipkin.reporter2/zipkin-reporter/2.7.7/ab55702f4c160e56e2cee89625148946fb423db9/zipkin-reporter-2.7.7.jar
+7f593e78e000-7f593e791000 r--s 00019000 08:01 8143567                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.zipkin.brave/brave/5.1.4/2a67ad8b38f6fc061bfd3ae39a5b9aaaf597e5d/brave-5.1.4.jar
+7f593e791000-7f593e792000 r--s 00005000 08:01 8143566                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.zipkin.brave/brave-instrumentation-http/5.1.4/f2c658804b974f34f4e7597f7ce8bc143d114a54/brave-instrumentation-http-5.1.4.jar
+7f593e792000-7f593e793000 r--s 00003000 08:01 8143564                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.zipkin.brave/brave-instrumentation-servlet/5.1.4/c2d6d499ec104fa8d9c5a3c3e2de55f93cdc9cd4/brave-instrumentation-servlet-5.1.4.jar
+7f593e793000-7f593e795000 r--s 00001000 08:01 8143565                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.zipkin.brave/brave-instrumentation-spring-webmvc/5.1.4/bab6c90d5e968984d8abc034ffe4d292461b503d/brave-instrumentation-spring-webmvc-5.1.4.jar
+7f593e795000-7f593e797000 r--s 00002000 08:01 8143563                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.zipkin.brave/brave-instrumentation-httpasyncclient/5.1.4/90fcfe92a2ac070115ee1b51d3163077c397f5f0/brave-instrumentation-httpasyncclient-5.1.4.jar
+7f593e797000-7f593e799000 r--s 00001000 08:01 8143562                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.zipkin.brave/brave-instrumentation-httpclient/5.1.4/71ae67179669055724bb484a1353977da6b7e9fe/brave-instrumentation-httpclient-5.1.4.jar
+7f593e799000-7f593e79a000 r--s 00003000 08:01 8143561                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.zipkin.brave/brave-instrumentation-kafka-clients/5.1.4/cfbd316118dbe2009fe34b452e0868f4797dd7e8/brave-instrumentation-kafka-clients-5.1.4.jar
+7f593e79a000-7f593e79b000 r--s 00002000 08:01 8143560                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.zipkin.brave/brave-instrumentation-spring-rabbit/5.1.4/cfee39f36c6bd1e08258ba43c51c01fc1b2749bd/brave-instrumentation-spring-rabbit-5.1.4.jar
+7f593e79b000-7f593e79d000 r--s 00001000 08:01 8143559                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.zipkin.brave/brave-instrumentation-spring-web/5.1.4/2ee2a0a55954b4e99cbe34dd287cb3f601f0c1cb/brave-instrumentation-spring-web-5.1.4.jar
+7f593e79d000-7f593e79f000 r--s 00000000 08:01 8143569                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.zipkin.brave/brave-context-log4j2/5.1.4/89a53a2141550363a90a758ef9f001caf9699de9/brave-context-log4j2-5.1.4.jar
+7f593e79f000-7f593e7a0000 r--s 00002000 08:01 8143558                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.zipkin.reporter2/zipkin-sender-amqp-client/2.7.7/1d35ea9af9ace0e3818a949db9967bc79ba8e1b2/zipkin-sender-amqp-client-2.7.7.jar
+7f593e7a0000-7f593e7a2000 r--s 00001000 08:01 8143557                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.zipkin.reporter2/zipkin-sender-kafka11/2.7.7/79b902895c02752dc46386a343f321201a76cf77/zipkin-sender-kafka11-2.7.7.jar
+7f593e7a2000-7f593e7a4000 r--s 00005000 08:01 8139097                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/xpp3/xpp3_min/1.1.4c/19d4e90b43059058f6e056f794f0ea4030d60b86/xpp3_min-1.1.4c.jar
+7f593e7a4000-7f593e7a5000 r--s 00001000 08:01 8139096                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/xmlpull/xmlpull/1.1.3.1/2b8e230d2ab644e4ecaa94db7cdedbc40c805dfa/xmlpull-1.1.3.1.jar
+7f593e7a5000-7f593e7bd000 r--s 000fe000 08:01 8143555                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.reactivex/rxjava/1.2.2/5b083e2a33225bc1c7b11678b7608e2bead4e417/rxjava-1.2.2.jar
+7f593e7bd000-7f593e7be000 r--s 00003000 08:01 8142993                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.cloud/spring-cloud-netflix-archaius/2.0.2.RELEASE/850f375325b47b8a331e29ccf9a7d8270f8a2361/spring-cloud-netflix-archaius-2.0.2.RELEASE.jar
+7f593e7be000-7f593e7c4000 r--s 00071000 08:01 8139092                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.codehaus.woodstox/woodstox-core-asl/4.4.1/84fee5eb1a4a1cefe65b6883c73b3fa83be3c1a1/woodstox-core-asl-4.4.1.jar
+7f593e7c4000-7f593e7c8000 r--s 0004b000 08:01 8143554                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.9.4/a9a71ec1aa37da47db168fede9a4a5fb5e374320/jackson-core-2.9.4.jar
+7f593e7c8000-7f593e7cb000 r--s 0000e000 08:01 8143029                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.9.4/1380b592ad70439346b5d954ad202be048451c5a/jackson-annotations-2.9.4.jar
+7f593e7cb000-7f593e7de000 r--s 00136000 08:01 8143552                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.9.4/498bbc3b94f566982c7f7c6d4d303fce365529be/jackson-databind-2.9.4.jar
+7f593e7de000-7f593e7e1000 r--s 00021000 08:01 8143550                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.fasterxml.jackson.module/jackson-module-afterburner/2.7.5/1bca2518156525b853a4e908ccd487476184e542/jackson-module-afterburner-2.7.5.jar
+7f593e7e1000-7f593e7e2000 r--s 00004000 08:01 8143025                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.github.vlsi.compactmap/compactmap/1.2.1/27aec1f3162c14b8a1178bb5c75ab43b618308ef/compactmap-1.2.1.jar
+7f593e7e2000-7f593e7ef000 r--s 000aa000 08:01 8143024                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.apache.httpcomponents/httpclient/4.5.3/d1577ae15f01ef5438c5afc62162457c00a34713/httpclient-4.5.3.jar
+7f593e7ef000-7f593e7f1000 r--s 0000a000 08:01 8139088                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/javax.ws.rs/jsr311-api/1.1.1/59033da2a1afd56af1ac576750a8d0b1830d59e6/jsr311-api-1.1.1.jar
+7f593e7f1000-7f593e7fb000 r--s 00061000 08:01 8139089                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.sun.jersey/jersey-core/1.19.1/4282d106f2acd5051bd9bc2935ed9a2920c9385/jersey-core-1.19.1.jar
+7f593e7fb000-7f593e7fe000 r--s 0001e000 08:01 8139087                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.sun.jersey/jersey-client/1.19.1/2df97ebd4e5c01599584c45caa3aeb563d268eef/jersey-client-1.19.1.jar
+7f593e7fe000-7f593e800000 r--s 00003000 08:01 8139086                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.sun.jersey.contribs/jersey-apache-client4/1.19.1/e1c45701a003097ace96bed4bc8fb937e9867498/jersey-apache-client4-1.19.1.jar
+7f593e800000-7f593e803000 r--s 00012000 08:01 8139085                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.codehaus.jettison/jettison/1.3.7/7d36a59a0577f11b12088b9e215d6860345b9e1d/jettison-1.3.7.jar
+7f593e803000-7f593e804000 r--s 00004000 08:01 8142980                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.security/spring-security-rsa/1.0.7.RELEASE/8fb787a76b2a31b7efbb71ae9be68b269a358302/spring-security-rsa-1.0.7.RELEASE.jar
+7f593e804000-7f593e807000 r--s 00017000 08:01 8142977                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.cloud/spring-cloud-context/2.0.2.RELEASE/8d9ac6e1d3e0868813fcd32da377108b3de53972/spring-cloud-context-2.0.2.RELEASE.jar
+7f593e807000-7f593e82e000 r--s 0027b000 08:01 8138737                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.alibaba/druid/1.1.10/5edd3db1f7ef54083e4c56e4743fa8bfbc517de/druid-1.1.10.jar
+7f593e82e000-7f593e831000 r--s 00011000 08:01 8138735                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.github.pagehelper/pagehelper/5.1.2/18dc5330c0de2478e54f453790eae4a8af7e5566/pagehelper-5.1.2.jar
+7f593e831000-7f593e833000 r--s 0000c000 08:01 8138733                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.mybatis/mybatis-spring/1.3.1/5197169e15a43066f177a1cd12a098e1283fdc76/mybatis-spring-1.3.1.jar
+7f593e833000-7f593e84d000 r--s 00173000 08:01 8138732                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.mybatis/mybatis/3.4.5/5200759b13f70652995fd206a52fdc98b01c65cd/mybatis-3.4.5.jar
+7f593e84d000-7f593e850000 r--s 00017000 08:01 8143777                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.github.openfeign/feign-core/9.7.0/ba4066f2db318768ad289746fc10709dbeaaaf07/feign-core-9.7.0.jar
+7f593e850000-7f593e855000 r--s 0001b000 08:01 8142978                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.cloud/spring-cloud-commons/2.0.2.RELEASE/9a10d873baefa48b087370dc86aa59461b258591/spring-cloud-commons-2.0.2.RELEASE.jar
+7f593e855000-7f593e86c000 r--s 00188000 08:01 8142825                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.4/7103ab519b1cdbb0642ad4eaf1db209d905d0f96/lombok-1.18.4.jar
+7f593e86c000-7f593e873000 r--s 0006a000 08:01 8138586                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.alibaba/fastjson/1.2.28/91dd221e7bc7fbf726ba6fa92735f311127b021d/fastjson-1.2.28.jar
+7f593e873000-7f593e878000 r--s 00041000 08:01 8138588                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/commons-lang/commons-lang/2.6/ce1edb914c94ebc388f086c6827e8bdeec71ac2/commons-lang-2.6.jar
+7f593e878000-7f593e87f000 r--s 00050000 08:01 8139042                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/commons-configuration/commons-configuration/1.8/6cce40435bcd8018018f16898de01976b319941a/commons-configuration-1.8.jar
+7f593e87f000-7f593e886000 r--s 0005e000 08:01 8138585                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.apache.commons/commons-lang3/3.3.2/90a3822c38ec8c996e84c16a3477ef632cbc87a3/commons-lang3-3.3.2.jar
+7f593e886000-7f593e88d000 r--s 00049000 08:01 8138598                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/redis.clients/jedis/2.7.3/5f6b152b43424aed4ace4e545879cf17945d1daa/jedis-2.7.3.jar
+7f593e88d000-7f593e892000 r--s 00022000 08:01 8143261                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.xmlunit/xmlunit-core/2.5.1/4ffdb346572a7356f7521cd3119ce5287d2e339d/xmlunit-core-2.5.1.jar
+7f593e892000-7f593e8aa000 r--s 00115000 08:01 8138527                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework/spring-core/5.0.10.RELEASE/cb270a60ceb573961588f511222984de64b4bc96/spring-core-5.0.10.RELEASE.jar
+7f593e8aa000-7f593e8ae000 r--s 0001b000 08:01 8143579                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.amqp/spring-amqp/2.0.3.RELEASE/357205b44e1a056a107d071504b3d82c557d0e71/spring-amqp-2.0.3.RELEASE.jar
+7f593e8ae000-7f593e8b3000 r--s 00040000 08:01 8143012                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework/spring-expression/5.0.10.RELEASE/eaf8595e3bf18ef1aca1c233d9871552d258e38a/spring-expression-5.0.10.RELEASE.jar
+7f593e8b3000-7f593e8b7000 r--s 0001c000 08:01 8143577                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.retry/spring-retry/1.2.2.RELEASE/638928732585c450e461f0a132b6834ad7cf3af0/spring-retry-1.2.2.RELEASE.jar
+7f593e8b7000-7f593e8c4000 r--s 00095000 08:01 8143011                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework/spring-beans/5.0.10.RELEASE/8ec7da928082a123c50d5d70cd4b46382db27e8b/spring-beans-5.0.10.RELEASE.jar
+7f593e8c4000-7f593e8d2000 r--s 00092000 08:01 8143574                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework/spring-webflux/5.0.1.RELEASE/c4f6ecf5b3065ae510e32cb56b338af4aa705a59/spring-webflux-5.0.1.RELEASE.jar
+7f593e8d2000-7f593e8d4000 r--s 0000f000 08:01 8143548                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.rabbitmq/http-client/2.0.1.RELEASE/477beafef58ccc398081b458d4ea572630795adb/http-client-2.0.1.RELEASE.jar
+7f593e8d4000-7f593e8dd000 r--s 00054000 08:01 8143578                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework/spring-messaging/5.0.7.RELEASE/8b818299a6b7db41617892fb67bb03696d2c8096/spring-messaging-5.0.7.RELEASE.jar
+7f593e8dd000-7f593e8e6000 r--s 00051000 08:01 8143009                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework/spring-aop/5.0.10.RELEASE/da65874f61aef9c25db794f493e50683346d3056/spring-aop-5.0.10.RELEASE.jar
+7f593e8e6000-7f593e900000 r--s 000f1000 08:01 8143010                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework/spring-context/5.0.10.RELEASE/6f53de0618219fefc2aebf92ba175e6b33e14ce0/spring-context-5.0.10.RELEASE.jar
+7f593e900000-7f593e907000 r--s 00035000 08:01 8143547                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.cloud/spring-cloud-sleuth-core/2.0.1.RELEASE/bc05867adc4cf431c9e7aca48c3cdf344343435f/spring-cloud-sleuth-core-2.0.1.RELEASE.jar
+7f593e907000-7f593e90f000 r--s 00037000 08:01 8143255                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework/spring-tx/5.0.10.RELEASE/55608ae84fde15eb942d675e3b1ee7d30394d4cb/spring-tx-5.0.10.RELEASE.jar
+7f593e90f000-7f593e910000 ---p 00000000 00:00 0 
+7f593e910000-7f593ea10000 rw-p 00000000 00:00 0 
+7f593ea10000-7f593ea13000 ---p 00000000 00:00 0 
+7f593ea13000-7f593eb11000 rw-p 00000000 00:00 0 
+7f593eb11000-7f593eb27000 r-xp 00000000 08:01 9045819                    /home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/amd64/libnet.so
+7f593eb27000-7f593ed27000 ---p 00016000 08:01 9045819                    /home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/amd64/libnet.so
+7f593ed27000-7f593ed28000 rw-p 00016000 08:01 9045819                    /home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/amd64/libnet.so
+7f593ed28000-7f593ed29000 ---p 00000000 00:00 0 
+7f593ed29000-7f593ed2c000 ---p 00000000 00:00 0 
+7f593ed2c000-7f593ee29000 rw-p 00000000 00:00 0 
+7f593ee29000-7f593ee2a000 ---p 00000000 00:00 0 
+7f593ee2a000-7f593ee2d000 ---p 00000000 00:00 0 
+7f593ee2d000-7f593ef2a000 rw-p 00000000 00:00 0 
+7f593ef2a000-7f593ef2b000 ---p 00000000 00:00 0 
+7f593ef2b000-7f593ef2e000 ---p 00000000 00:00 0 
+7f593ef2e000-7f593f02b000 rw-p 00000000 00:00 0 
+7f593f02b000-7f593f02e000 ---p 00000000 00:00 0 
+7f593f02e000-7f593f12c000 rw-p 00000000 00:00 0 
+7f593f12c000-7f593f12f000 ---p 00000000 00:00 0 
+7f593f12f000-7f593f22d000 rw-p 00000000 00:00 0 
+7f593f22d000-7f593fbfc000 r--p 00000000 08:01 4853073                    /usr/lib/locale/locale-archive
+7f593fbfc000-7f593fbff000 ---p 00000000 00:00 0 
+7f593fbff000-7f593fcfd000 rw-p 00000000 00:00 0 
+7f593fcfd000-7f593fd00000 ---p 00000000 00:00 0 
+7f593fd00000-7f593fdfe000 rw-p 00000000 00:00 0 
+7f593fdfe000-7f593fdff000 ---p 00000000 00:00 0 
+7f593fdff000-7f5940000000 rw-p 00000000 00:00 0 
+7f5940000000-7f5940021000 rw-p 00000000 00:00 0 
+7f5940021000-7f5944000000 ---p 00000000 00:00 0 
+7f5944000000-7f5944004000 r--s 00028000 08:01 8143007                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework/spring-context-support/5.0.10.RELEASE/61b3159aceaae05118bfe2a7fcd4141921986a78/spring-context-support-5.0.10.RELEASE.jar
+7f5944004000-7f594400e000 r--s 0005f000 08:01 8138746                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework/spring-jdbc/4.3.10.RELEASE/91e2f69e633f8eac5d5ef516595556ab7db87f3d/spring-jdbc-4.3.10.RELEASE.jar
+7f594400e000-7f5944023000 r--s 000d1000 08:01 8143003                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.boot/spring-boot/2.0.6.RELEASE/4d214b08bbc74f03d404e8fc862102334e0f73d1/spring-boot-2.0.6.RELEASE.jar
+7f5944023000-7f5944044000 r--s 000ff000 08:01 8142999                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-autoconfigure/2.0.6.RELEASE/e8c88fd703dbdf79f94178a5018ad67d1ecb1d0d/spring-boot-autoconfigure-2.0.6.RELEASE.jar
+7f5944044000-7f594405e000 r--s 0011f000 08:01 8143572                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.integration/spring-integration-core/5.0.6.RELEASE/972b4f61587ab645f65bc7eef8f7137dece78d82/spring-integration-core-5.0.6.RELEASE.jar
+7f594405e000-7f5944078000 r--s 0011b000 08:01 8143006                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework/spring-web/5.0.10.RELEASE/fbaaa53ec99f45fd7aaf9125beeb5c3388cce088/spring-web-5.0.10.RELEASE.jar
+7f5944078000-7f5944086000 r--s 00087000 08:01 8143253                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework/spring-test/5.0.10.RELEASE/1d2d272073f36c689c693ec3ec94d7ad7e136a2e/spring-test-5.0.10.RELEASE.jar
+7f5944086000-7f59440db000 r--s 00367000 08:01 8143258                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.assertj/assertj-core/3.9.1/c5ce126b15f28d56cd8f960c1a6a058b9c9aea87/assertj-core-3.9.1.jar
+7f59440db000-7f5948000000 rw-p 00000000 00:00 0 
+7f5948000000-7f5948021000 rw-p 00000000 00:00 0 
+7f5948021000-7f594c000000 ---p 00000000 00:00 0 
+7f594c000000-7f594c001000 r--s 00001000 08:01 8143778                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.github.openfeign/feign-java8/9.7.0/5895e69840bb46105e7eda7409a64c17a3c59167/feign-java8-9.7.0.jar
+7f594c001000-7f594c003000 r--s 00006000 08:01 8143553                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework/spring-tuple/1.0.0.RELEASE/5feaacebc66a885e9f2017063586df2300ce5c68/spring-tuple-1.0.0.RELEASE.jar
+7f594c003000-7f594c005000 r--s 00010000 08:01 8143254                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework/spring-oxm/5.0.10.RELEASE/f6d583cbf03e625b65647ca1fc7929d5fbfe42da/spring-oxm-5.0.10.RELEASE.jar
+7f594c005000-7f594c006000 r--s 00003000 08:01 8138731                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.mybatis.spring.boot/mybatis-spring-boot-autoconfigure/1.3.1/af4ba7d4594459cbad87cb5561c271da26df3aa/mybatis-spring-boot-autoconfigure-1.3.1.jar
+7f594c006000-7f594c007000 r--s 00001000 08:01 8138734                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.github.pagehelper/pagehelper-spring-boot-autoconfigure/1.2.3/6e8c7e8fd31268b0b5960cc90f4aa82304a4d628/pagehelper-spring-boot-autoconfigure-1.2.3.jar
+7f594c007000-7f594c008000 r--s 00001000 08:01 8143551                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.integration/spring-integration-tuple/1.0.0.RELEASE/4ac09adb2ab6857604784b3e61ef02bcdc974928/spring-integration-tuple-1.0.0.RELEASE.jar
+7f594c008000-7f594c00a000 r--s 0000d000 08:01 8143571                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.integration/spring-integration-jmx/5.0.4.RELEASE/6b560d044f40c2537ccff9a486854ecee99a6dc8/spring-integration-jmx-5.0.4.RELEASE.jar
+7f594c00a000-7f594c00c000 r--s 00002000 08:01 8143783                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.github.openfeign.form/feign-form-spring/3.3.0/1a7f573dc3192c5d7269bc2e45f03a3b220e4002/feign-form-spring-3.3.0.jar
+7f594c00c000-7f594c00e000 r--s 00006000 08:01 8143259                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.skyscreamer/jsonassert/1.5.0/6c9d5fe2f59da598d9aefc1cfc6528ff3cf32df3/jsonassert-1.5.0.jar
+7f594c00e000-7f594c010000 r--s 00009000 08:01 8138533                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.hamcrest/hamcrest-core/1.3/42a25dc3219429f0e5d060061f71acb49bf010a0/hamcrest-core-1.3.jar
+7f594c010000-7f594c011000 r--s 0000c000 08:01 8143257                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.hamcrest/hamcrest-library/1.3/4785a3c21320980282f9f33d0d1264a69040538f/hamcrest-library-1.3.jar
+7f594c011000-7f594c021000 r--s 00075000 08:01 8143256                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.mockito/mockito-core/2.15.0/b84bfbbc29cd22c9529409627af6ea2897f4fa85/mockito-core-2.15.0.jar
+7f594c021000-7f594c026000 r--s 0002b000 08:01 8143252                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-test/2.0.6.RELEASE/33a53ca6d55f35b3a89320c260262a5310ba8afc/spring-boot-test-2.0.6.RELEASE.jar
+7f594c026000-7f594c02d000 r--s 00020000 08:01 8143251                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-test-autoconfigure/2.0.6.RELEASE/b0eb15474e795850dfa59b01ee6a83d7a39e3645/spring-boot-test-autoconfigure-2.0.6.RELEASE.jar
+7f594c02d000-7f594c044000 r--s 0010c000 08:01 8143262                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.lettuce/lettuce-core/5.0.5.RELEASE/d6263965c5dfa8c440940842e2bbfece0044b7f6/lettuce-core-5.0.5.RELEASE.jar
+7f594c044000-7f594c046000 r--s 00009000 08:01 8138742                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.25/da76ca59f6a57ee3102f8f9bd9cee742973efa8a/slf4j-api-1.7.25.jar
+7f594c046000-7f594c052000 r--s 00075000 08:01 8143549                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.rabbitmq/amqp-client/5.1.2/89bf04e50635f83bc40dabce1379c1463d7458ec/amqp-client-5.1.2.jar
+7f594c052000-7f594c05a000 r--s 00064000 08:01 8143546                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.amqp/spring-rabbit/2.0.3.RELEASE/60436f27408167da4884ff25ce98bf6728a09da1/spring-rabbit-2.0.3.RELEASE.jar
+7f594c05a000-7f594c05d000 r--s 0001a000 08:01 8143545                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.integration/spring-integration-amqp/5.0.4.RELEASE/5eb85d01ffcb8ad05ec14df84b108914813d6551/spring-integration-amqp-5.0.4.RELEASE.jar
+7f594c05d000-7f594c05f000 r--s 00002000 08:01 8139063                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.netflix.netflix-commons/netflix-statistics/0.1.1/12f6e48253f9cafa0e24d7d232ff504c52143212/netflix-statistics-0.1.1.jar
+7f594c05f000-7f594c064000 r--s 00033000 08:01 8142997                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.netflix.servo/servo-core/0.12.21/f56c3bf161217be98fbe4135adf8480590db9c37/servo-core-0.12.21.jar
+7f594c064000-7f594c065000 r--s 00001000 08:01 8139061                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.netflix.netflix-commons/netflix-commons-util/0.1.1/39e67061780476f207b31465baaed84a91ff659f/netflix-commons-util-0.1.1.jar
+7f594c065000-7f594c07d000 r--s 000f2000 08:01 8143250                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.data/spring-data-commons/2.0.11.RELEASE/273e5cd5d6e772b5c4208b12771ed48647b2b9bb/spring-data-commons-2.0.11.RELEASE.jar
+7f594c07d000-7f594c07f000 r--s 00000000 08:01 8138741                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.slf4j/jul-to-slf4j/1.7.25/af5364cd6679bfffb114f0dec8a157aaa283b76/jul-to-slf4j-1.7.25.jar
+7f594c07f000-7f594c081000 r--s 00003000 08:01 8143002                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-to-slf4j/2.10.0/f7e631ccf49cfc0aefa4a2a728da7d374c05bd3c/log4j-to-slf4j-2.10.0.jar
+7f594c081000-7f594c087000 r--s 00041000 08:01 8142998                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/ch.qos.logback/logback-classic/1.2.3/7c4f3c474fb2c041d8028740440937705ebb473a/logback-classic-1.2.3.jar
+7f594c087000-7f594c088000 r--s 00000000 08:01 8142996                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-logging/2.0.6.RELEASE/a730d62c8eb80cdc95e5089e47570d24731cf5dd/spring-boot-starter-logging-2.0.6.RELEASE.jar
+7f594c088000-7f594c089000 r--s 00000000 08:01 8142981                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter/2.0.6.RELEASE/9d904a4387e076343a3478c32198ec7d9d633ff4/spring-boot-starter-2.0.6.RELEASE.jar
+7f594c089000-7f594c08a000 r--s 00000000 08:01 8143544                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-validation/2.0.1.RELEASE/8bdee168ba3b96657733537f1541bc536b9c0520/spring-boot-starter-validation-2.0.1.RELEASE.jar
+7f594c08a000-7f594c090000 r--s 00038000 08:01 8143543                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.cloud/spring-cloud-stream/2.0.0.RELEASE/66f02d7f478c31917d21c81c28e715d43c92d5b1/spring-cloud-stream-2.0.0.RELEASE.jar
+7f594c090000-7f594c091000 r--s 00000000 08:01 8143542                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-amqp/2.0.1.RELEASE/6b3cded630f0ee435ac6a3a24ac57306853c001/spring-boot-starter-amqp-2.0.1.RELEASE.jar
+7f594c091000-7f594c093000 r--s 00006000 08:01 8143539                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.cloud/spring-cloud-stream-binder-rabbit-core/2.0.0.RELEASE/b2f73778412b556e0d03369a7be879e64fdc56b9/spring-cloud-stream-binder-rabbit-core-2.0.0.RELEASE.jar
+7f594c093000-7f594c095000 r--s 00006000 08:01 8143538                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.cloud/spring-cloud-stream-binder-rabbit/2.0.0.RELEASE/52e3d1112eeb7e25553b204db60884a9b01e9579/spring-cloud-stream-binder-rabbit-2.0.0.RELEASE.jar
+7f594c095000-7f594c096000 r--s 00000000 08:01 8138730                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-jdbc/1.5.6.RELEASE/a2628fded329869fcdb812d7524d03376f4f64ed/spring-boot-starter-jdbc-1.5.6.RELEASE.jar
+7f594c096000-7f594c097000 r--s 00000000 08:01 8142979                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-aop/2.0.6.RELEASE/f3db2e05267686fd97af5460a155bac4298fab4d/spring-boot-starter-aop-2.0.6.RELEASE.jar
+7f594c097000-7f594c0a1000 r--s 00059000 08:01 8139059                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.reactivex/rxnetty/0.4.9/5aff3c9d6bb9d9066c378bb3d2a4413ed1773bcf/rxnetty-0.4.9.jar
+7f594c0a1000-7f594c0a3000 r--s 00006000 08:01 8139053                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.reactivex/rxnetty-servo/0.4.9/b7d6d6e132686c280f16710eaa3e90719f6808f8/rxnetty-servo-0.4.9.jar
+7f594c0a3000-7f594c0a6000 r--s 0000b000 08:01 8139058                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.reactivex/rxnetty-contexts/0.4.9/6efe17a25602a5424c18ab975aa9c28b6d6b7f56/rxnetty-contexts-0.4.9.jar
+7f594c0a6000-7f594c0a9000 r--s 00016000 08:01 8139055                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.netflix.netflix-commons/netflix-infix/0.3.0/acc65969f7367ddd2f1265e0cd7330509ed530dc/netflix-infix-0.3.0.jar
+7f594c0a9000-7f594c0aa000 r--s 00004000 08:01 8138596                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.plugin/spring-plugin-core/1.2.0.RELEASE/f380e7760032e7d929184f8ad8a33716b75c0657/spring-plugin-core-1.2.0.RELEASE.jar
+7f594c0aa000-7f594c0ac000 r--s 00000000 08:01 8138595                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.plugin/spring-plugin-metadata/1.2.0.RELEASE/97223fc496b6cab31602eedbd4202aa4fff0d44f/spring-plugin-metadata-1.2.0.RELEASE.jar
+7f594c0ac000-7f594c0af000 r--s 00015000 08:01 8138594                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.springfox/springfox-core/2.6.1/5c502e6b9d50d34096077eacc384cd00f63710e1/springfox-core-2.6.1.jar
+7f594c0af000-7f594c0b2000 r--s 0000a000 08:01 8138593                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.springfox/springfox-spi/2.6.1/972ae720c6a9a5f31be2744972b435cc39166174/springfox-spi-2.6.1.jar
+7f594c0b2000-7f594c0b5000 r--s 00010000 08:01 8138592                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.springfox/springfox-schema/2.6.1/b4d837ed7dc726a59504d2e6587e162e071a8965/springfox-schema-2.6.1.jar
+7f594c0b5000-7f594c0b8000 r--s 0001f000 08:01 8138590                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.swagger/swagger-models/1.5.10/da29e4f4f7cff80b1ef134b0f3805013be443e58/swagger-models-1.5.10.jar
+7f594c0b8000-7f594c0bd000 r--s 00021000 08:01 8138591                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.springfox/springfox-spring-web/2.6.1/6478ed7e49755b652aac907d42a735349056a6a/springfox-spring-web-2.6.1.jar
+7f594c0bd000-7f594c0c0000 r--s 00012000 08:01 8138589                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.springfox/springfox-swagger-common/2.6.1/47befb039a0a1f0cdaab74d2777fa9eb6b01f8db/springfox-swagger-common-2.6.1.jar
+7f594c0c0000-7f594c0c2000 r--s 0006e000 08:01 8138612                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.springfox/springfox-swagger-ui/2.6.1/4c854c86c91ab36c86fc1a63571a0614c2ea9ab2/springfox-swagger-ui-2.6.1.jar
+7f594c0c2000-7f594c0c6000 r--s 00016000 08:01 8143249                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.data/spring-data-keyvalue/2.0.11.RELEASE/8b8184255b4cb2fcca8aeae956e9bd61668310a4/spring-data-keyvalue-2.0.11.RELEASE.jar
+7f594c0c6000-7f594c0ca000 r--s 0001f000 08:01 8142990                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.netflix.archaius/archaius-core/0.7.6/be0c1024d08ad68ec25f9f32b0e9df1ab7ecb45b/archaius-core-0.7.6.jar
+7f594c0ca000-7f594c0ce000 r--s 00011000 08:01 8142988                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.netflix.ribbon/ribbon-core/2.2.5/80b6fe934799269073e69c5d7e67334459ef7e2e/ribbon-core-2.2.5.jar
+7f594c0ce000-7f594c0d2000 r--s 00024000 08:01 8142987                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.netflix.ribbon/ribbon-loadbalancer/2.2.5/5f713ef0b8d01580666face5e91d8c6af1daa468/ribbon-loadbalancer-2.2.5.jar
+7f594c0d2000-7f594c0d3000 r--s 00009000 08:01 8142985                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.netflix.ribbon/ribbon-transport/2.2.5/7c8e321322a98c72a36f4a81f84cafe21273c010/ribbon-transport-2.2.5.jar
+7f594c0d3000-7f594c0d5000 r--s 0000c000 08:01 8142984                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.netflix.ribbon/ribbon-httpclient/2.2.5/e2662937935d218f2c63105f6df39c3dfa0d06a1/ribbon-httpclient-2.2.5.jar
+7f594c0d5000-7f594c0d7000 r--s 0000f000 08:01 8139030                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.netflix.netflix-commons/netflix-eventbus/0.3.0/3f864adbe81f0849729fcbba3fe693c32be739ea/netflix-eventbus-0.3.0.jar
+7f594c0d7000-7f594c0d8000 r--s 00000000 08:01 8143776                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.github.openfeign/feign-slf4j/9.7.0/f74f4241746a93bf64a307ac75dd4f2c716d5ca1/feign-slf4j-9.7.0.jar
+7f594c0d8000-7f594c0da000 r--s 0000d000 08:01 8138587                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.springfox/springfox-swagger2/2.6.1/73c3a70ec0b10b61c8eb9ef1659131cd78dbbd82/springfox-swagger2-2.6.1.jar
+7f594c0da000-7f594c0e0000 r--s 00031000 08:01 8143283                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.jayway.jsonpath/json-path/2.4.0/765a4401ceb2dc8d40553c2075eb80a8fa35c2ae/json-path-2.4.0.jar
+7f594c0e0000-7f594c0f9000 r--s 0012a000 08:01 8143246                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.data/spring-data-redis/2.0.11.RELEASE/8125839e776abd60181dc782892985b3e293aac7/spring-data-redis-2.0.11.RELEASE.jar
+7f594c0f9000-7f594d000000 rw-p 00000000 00:00 0 
+7f594d000000-7f594d510000 rwxp 00000000 00:00 0 
+7f594d510000-7f595c000000 ---p 00000000 00:00 0 
+7f595c000000-7f595d0bf000 rw-p 00000000 00:00 0 
+7f595d0bf000-7f5960000000 ---p 00000000 00:00 0 
+7f5960000000-7f596000e000 r--s 00097000 08:01 8142992                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.google.inject/guice/4.1.0/eeb69005da379a10071aa4948c48d89250febb07/guice-4.1.0.jar
+7f596000e000-7f5960011000 r--s 00010000 08:01 8143540                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.ctrip.framework.apollo/apollo-core/1.1.1/7f0f4231efb8e0d98cb24b5a4c798c77b4b83227/apollo-core-1.1.1.jar
+7f5960011000-7f5960012000 r--s 00000000 08:01 8143536                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.cloud/spring-cloud-starter-stream-rabbit/2.0.0.RELEASE/df8ef6a1562be1a8da52e367a26dca9317f624d/spring-cloud-starter-stream-rabbit-2.0.0.RELEASE.jar
+7f5960012000-7f5960014000 r--s 00003000 08:01 8143537                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.reactivex/rxjava-reactive-streams/1.2.1/dac56d021c092c34662943dae3ab1432542005/rxjava-reactive-streams-1.2.1.jar
+7f5960014000-7f5960020000 r--s 00068000 08:01 8143535                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.netflix.hystrix/hystrix-core/1.5.12/75379b6671fcaa9cec33035df684a68ec7741ca6/hystrix-core-1.5.12.jar
+7f5960020000-7f5960022000 r--s 00007000 08:01 8143533                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.netflix.hystrix/hystrix-serialization/1.5.12/ef4a2758e5bc6cf42ae848d4ba3d5363e0a2b27/hystrix-serialization-1.5.12.jar
+7f5960022000-7f5960026000 r--s 00012000 08:01 8142986                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.netflix.ribbon/ribbon/2.2.5/3f97c8acfc68c35012f00d10b9ac63fc8f48d790/ribbon-2.2.5.jar
+7f5960026000-7f5960027000 r--s 00003000 08:01 8143775                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/io.github.openfeign/feign-hystrix/9.7.0/358d29c524b5725db4305e78e9b09fe9d02d2d2/feign-hystrix-9.7.0.jar
+7f5960027000-7f596002d000 r--s 00026000 08:01 8143532                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.netflix.hystrix/hystrix-javanica/1.5.12/5e4d888e0dba811e8ac3a9dbc8cbcc511734ace4/hystrix-javanica-1.5.12.jar
+7f596002d000-7f596002f000 r--s 0000c000 08:01 8143531                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.netflix.hystrix/hystrix-metrics-event-stream/1.5.12/3b3beae83ab5e8c10154c9e9581d7c210276e227/hystrix-metrics-event-stream-1.5.12.jar
+7f596002f000-7f5960033000 r--s 00016000 08:01 8142991                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.cloud/spring-cloud-netflix-ribbon/2.0.2.RELEASE/2a7381a1daf06b8ac5da0779216daa8d6f871e66/spring-cloud-netflix-ribbon-2.0.2.RELEASE.jar
+7f5960033000-7f5960037000 r--s 00017000 08:01 8143773                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.cloud/spring-cloud-openfeign-core/2.0.2.RELEASE/5d44cbdb23fc90942b7c160b2ecbb9f96041614c/spring-cloud-openfeign-core-2.0.2.RELEASE.jar
+7f5960037000-7f596003a000 r--s 00008000 08:01 8143530                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.cloud/spring-cloud-sleuth-zipkin/2.0.1.RELEASE/ce6a224c4440e4a390e0a0edbd66f3d51c3c089/spring-cloud-sleuth-zipkin-2.0.1.RELEASE.jar
+7f596003a000-7f5960048000 r--s 00082000 08:01 8142995                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.thoughtworks.xstream/xstream/1.4.10/dfecae23647abc9d9fd0416629a4213a3882b101/xstream-1.4.10.jar
+7f5960048000-7f5960052000 r--s 00062000 08:01 8142983                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.netflix.eureka/eureka-client/1.9.3/9aa210eb20e2f9390e626d3e6b3dddef4d7ea8f1/eureka-client-1.9.3.jar
+7f5960052000-7f5960054000 r--s 00003000 08:01 8142976                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.netflix.ribbon/ribbon-eureka/2.2.5/58016757f3ed6e98c0c1ca1f37d7855a2409551b/ribbon-eureka-2.2.5.jar
+7f5960054000-7f5960059000 r--s 00039000 08:01 8142982                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.netflix.eureka/eureka-core/1.9.3/8e134b576d2e55bd36b01d607eeea0e181f12150/eureka-core-1.9.3.jar
+7f5960059000-7f596005b000 r--s 00005000 08:01 8142975                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.cloud/spring-cloud-netflix-core/2.0.2.RELEASE/159d63bc80209e61a273ef6d7c0aa25c8b31f072/spring-cloud-netflix-core-2.0.2.RELEASE.jar
+7f596005b000-7f596005e000 r--s 00015000 08:01 8142974                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.cloud/spring-cloud-netflix-eureka-client/2.0.2.RELEASE/7f3c2971acfd54c21abc3a8aff24a2ffce9e31bc/spring-cloud-netflix-eureka-client-2.0.2.RELEASE.jar
+7f596005e000-7f596005f000 r--s 00000000 08:01 8142968                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.cloud/spring-cloud-starter/2.0.2.RELEASE/a145c38492435b6ef53c145c4ba7177de65fbb46/spring-cloud-starter-2.0.2.RELEASE.jar
+7f596005f000-7f5960061000 r--s 00009000 08:01 8143529                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.cloud/spring-cloud-bus/2.0.0.RELEASE/81bf3a7ff611328de17834d8ff490db7cc02d33e/spring-cloud-bus-2.0.0.RELEASE.jar
+7f5960061000-7f5960062000 r--s 00000000 08:01 8143528                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.cloud/spring-cloud-starter-sleuth/2.0.1.RELEASE/c551404317442c57c6950f311e2e5a2a17c95c83/spring-cloud-starter-sleuth-2.0.1.RELEASE.jar
+7f5960062000-7f5960063000 r--s 00000000 08:01 8142970                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.cloud/spring-cloud-starter-netflix-archaius/2.0.2.RELEASE/971bb26eb0563d487a41a3745e4494e032eb0e7e/spring-cloud-starter-netflix-archaius-2.0.2.RELEASE.jar
+7f5960063000-7f5960064000 r--s 00000000 08:01 8143055                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.cloud/spring-cloud-starter-netflix-ribbon/2.0.2.RELEASE/adde709e1140f3b60a709cc2109bea00a2f8b1e9/spring-cloud-starter-netflix-ribbon-2.0.2.RELEASE.jar
+7f5960064000-7f5960065000 r--s 00004000 08:01 8138757                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.alibaba/druid-spring-boot-starter/1.1.10/f8f2f6c06a3ae43d19221e62e3579825d25a845c/druid-spring-boot-starter-1.1.10.jar
+7f5960065000-7f596006e000 r--s 0006f000 08:01 8142826                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/log4j/log4j/1.2.17/5af35056b4d257e4b64b9e8069c0746e8b08629f/log4j-1.2.17.jar
+7f596006e000-7f596006f000 r--s 00000000 08:01 8138726                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.mybatis.spring.boot/mybatis-spring-boot-starter/1.3.1/f67bd22f518df4b56e6647c90692529af4715a10/mybatis-spring-boot-starter-1.3.1.jar
+7f596006f000-7f5960070000 r--s 00000000 08:01 8138727                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.github.pagehelper/pagehelper-spring-boot-starter/1.2.3/f35ea818f0186601fdac25c5eed948e4311ec1d4/pagehelper-spring-boot-starter-1.2.3.jar
+7f5960070000-7f5960079000 r--s 000e4000 08:01 8138728                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/mysql/mysql-connector-java/5.1.32/d28c9a6cf0810fd0e2180e44029c10a54ca26de8/mysql-connector-java-5.1.32.jar
+7f5960079000-7f596007a000 r--s 00000000 08:01 8143774                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.cloud/spring-cloud-starter-openfeign/2.0.2.RELEASE/c6c1b5451eef8b72006c4271d0d0374bd8e49d7e/spring-cloud-starter-openfeign-2.0.2.RELEASE.jar
+7f596007a000-7f5960081000 r--s 00000000 08:01 5244053                    /usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache
+7f5960081000-7f59600a2000 r--p 00000000 08:01 6556423                    /usr/share/locale-langpack/zh_CN/LC_MESSAGES/libc.mo
+7f59600a2000-7f59600aa000 r--s 00045000 08:01 8138532                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/junit/junit/4.12/2973d150c0dc1fefe998f834810d68f278ea58ec/junit-4.12.jar
+7f59600aa000-7f59600ab000 r--s 00000000 08:01 8143244                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-test/2.0.6.RELEASE/f92fd015cfc9a9bd6ae653dca8d4ec5b83d4ba00/spring-boot-starter-test-2.0.6.RELEASE.jar
+7f59600ab000-7f59600ae000 r--s 00015000 08:01 8139003                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/javax.servlet/javax.servlet-api/4.0.1/a27082684a2ff0bf397666c3943496c44541d1ca/javax.servlet-api-4.0.1.jar
+7f59600ae000-7f59600af000 r--s 00000000 08:01 8143241                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-data-redis/2.0.6.RELEASE/3a9617eddbeb6829a1878c561619dd1c674b18fc/spring-boot-starter-data-redis-2.0.6.RELEASE.jar
+7f59600af000-7f59600b4000 r--s 00021000 08:01 8143593                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/com.ctrip.framework.apollo/apollo-client/1.1.1/da1653c6a22af9cf1e1a6daf1c2cff2353a524b1/apollo-client-1.1.1.jar
+7f59600b4000-7f59600b5000 r--s 00000000 08:01 8143522                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.cloud/spring-cloud-starter-bus-amqp/2.0.0.RELEASE/4984ffb9915d240eed5d7902477818e359700879/spring-cloud-starter-bus-amqp-2.0.0.RELEASE.jar
+7f59600b5000-7f59600b6000 r--s 00000000 08:01 8143524                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.cloud/spring-cloud-starter-netflix-hystrix/2.0.2.RELEASE/87609f6c3aacfeba4c9dd20c434d44274fadf5e5/spring-cloud-starter-netflix-hystrix-2.0.2.RELEASE.jar
+7f59600b6000-7f59600c9000 r--s 00345000 08:01 9045641                    /home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/resources.jar
+7f59600c9000-7f59600dc000 r--s 000d6000 08:01 9045545                    /home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/plugin.jar
+7f59600dc000-7f59600e1000 r--s 0009d000 08:01 9045660                    /home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/jsse.jar
+7f59600e1000-7f59600fc000 r--s 0020c000 08:01 9045521                    /home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/deploy.jar
+7f59600fc000-7f59602fe000 rw-p 00000000 00:00 0 
+7f59602fe000-7f59604d8000 r--s 03d68000 08:01 9045603                    /home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/rt.jar
+7f59604d8000-7f59608f0000 rw-p 00000000 00:00 0 
+7f59608f0000-7f59608f1000 ---p 00000000 00:00 0 
+7f59608f1000-7f59609f1000 rw-p 00000000 00:00 0 
+7f59609f1000-7f59609f2000 ---p 00000000 00:00 0 
+7f59609f2000-7f5960af2000 rw-p 00000000 00:00 0 
+7f5960af2000-7f5960af3000 ---p 00000000 00:00 0 
+7f5960af3000-7f5960bf3000 rw-p 00000000 00:00 0 
+7f5960bf3000-7f5960bf4000 ---p 00000000 00:00 0 
+7f5960bf4000-7f5960d1c000 rw-p 00000000 00:00 0 
+7f5960d1c000-7f5960f60000 ---p 00000000 00:00 0 
+7f5960f60000-7f5960f88000 rw-p 00000000 00:00 0 
+7f5960f88000-7f59611cc000 ---p 00000000 00:00 0 
+7f59611cc000-7f5961210000 rw-p 00000000 00:00 0 
+7f5961210000-7f5961302000 ---p 00000000 00:00 0 
+7f5961302000-7f5961318000 rw-p 00000000 00:00 0 
+7f5961318000-7f59616c3000 ---p 00000000 00:00 0 
+7f59616c3000-7f59616de000 r-xp 00000000 08:01 9045815                    /home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/amd64/libzip.so
+7f59616de000-7f59618de000 ---p 0001b000 08:01 9045815                    /home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/amd64/libzip.so
+7f59618de000-7f59618df000 rw-p 0001b000 08:01 9045815                    /home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/amd64/libzip.so
+7f59618df000-7f59618ea000 r-xp 00000000 08:01 4592311                    /lib/x86_64-linux-gnu/libnss_files-2.27.so
+7f59618ea000-7f5961ae9000 ---p 0000b000 08:01 4592311                    /lib/x86_64-linux-gnu/libnss_files-2.27.so
+7f5961ae9000-7f5961aea000 r--p 0000a000 08:01 4592311                    /lib/x86_64-linux-gnu/libnss_files-2.27.so
+7f5961aea000-7f5961aeb000 rw-p 0000b000 08:01 4592311                    /lib/x86_64-linux-gnu/libnss_files-2.27.so
+7f5961aeb000-7f5961af1000 rw-p 00000000 00:00 0 
+7f5961af1000-7f5961b08000 r-xp 00000000 08:01 4592305                    /lib/x86_64-linux-gnu/libnsl-2.27.so
+7f5961b08000-7f5961d07000 ---p 00017000 08:01 4592305                    /lib/x86_64-linux-gnu/libnsl-2.27.so
+7f5961d07000-7f5961d08000 r--p 00016000 08:01 4592305                    /lib/x86_64-linux-gnu/libnsl-2.27.so
+7f5961d08000-7f5961d09000 rw-p 00017000 08:01 4592305                    /lib/x86_64-linux-gnu/libnsl-2.27.so
+7f5961d09000-7f5961d0b000 rw-p 00000000 00:00 0 
+7f5961d0b000-7f5961d16000 r-xp 00000000 08:01 4592322                    /lib/x86_64-linux-gnu/libnss_nis-2.27.so
+7f5961d16000-7f5961f15000 ---p 0000b000 08:01 4592322                    /lib/x86_64-linux-gnu/libnss_nis-2.27.so
+7f5961f15000-7f5961f16000 r--p 0000a000 08:01 4592322                    /lib/x86_64-linux-gnu/libnss_nis-2.27.so
+7f5961f16000-7f5961f17000 rw-p 0000b000 08:01 4592322                    /lib/x86_64-linux-gnu/libnss_nis-2.27.so
+7f5961f17000-7f5961f1f000 r-xp 00000000 08:01 4592307                    /lib/x86_64-linux-gnu/libnss_compat-2.27.so
+7f5961f1f000-7f596211f000 ---p 00008000 08:01 4592307                    /lib/x86_64-linux-gnu/libnss_compat-2.27.so
+7f596211f000-7f5962120000 r--p 00008000 08:01 4592307                    /lib/x86_64-linux-gnu/libnss_compat-2.27.so
+7f5962120000-7f5962121000 rw-p 00009000 08:01 4592307                    /lib/x86_64-linux-gnu/libnss_compat-2.27.so
+7f5962121000-7f596212b000 r-xp 00000000 08:01 9045824                    /home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/amd64/libinstrument.so
+7f596212b000-7f596232a000 ---p 0000a000 08:01 9045824                    /home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/amd64/libinstrument.so
+7f596232a000-7f596232b000 rw-p 00009000 08:01 9045824                    /home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/amd64/libinstrument.so
+7f596232b000-7f5962356000 r-xp 00000000 08:01 9045809                    /home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/amd64/libjava.so
+7f5962356000-7f5962555000 ---p 0002b000 08:01 9045809                    /home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/amd64/libjava.so
+7f5962555000-7f5962557000 rw-p 0002a000 08:01 9045809                    /home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/amd64/libjava.so
+7f5962557000-7f5962564000 r-xp 00000000 08:01 9045814                    /home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/amd64/libverify.so
+7f5962564000-7f5962764000 ---p 0000d000 08:01 9045814                    /home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/amd64/libverify.so
+7f5962764000-7f5962766000 rw-p 0000d000 08:01 9045814                    /home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/amd64/libverify.so
+7f5962766000-7f596276d000 r-xp 00000000 08:01 4592362                    /lib/x86_64-linux-gnu/librt-2.27.so
+7f596276d000-7f596296c000 ---p 00007000 08:01 4592362                    /lib/x86_64-linux-gnu/librt-2.27.so
+7f596296c000-7f596296d000 r--p 00006000 08:01 4592362                    /lib/x86_64-linux-gnu/librt-2.27.so
+7f596296d000-7f596296e000 rw-p 00007000 08:01 4592362                    /lib/x86_64-linux-gnu/librt-2.27.so
+7f596296e000-7f5962b0b000 r-xp 00000000 08:01 4592284                    /lib/x86_64-linux-gnu/libm-2.27.so
+7f5962b0b000-7f5962d0a000 ---p 0019d000 08:01 4592284                    /lib/x86_64-linux-gnu/libm-2.27.so
+7f5962d0a000-7f5962d0b000 r--p 0019c000 08:01 4592284                    /lib/x86_64-linux-gnu/libm-2.27.so
+7f5962d0b000-7f5962d0c000 rw-p 0019d000 08:01 4592284                    /lib/x86_64-linux-gnu/libm-2.27.so
+7f5962d0c000-7f59639e5000 r-xp 00000000 08:01 9045791                    /home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/amd64/server/libjvm.so
+7f59639e5000-7f5963be4000 ---p 00cd9000 08:01 9045791                    /home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/amd64/server/libjvm.so
+7f5963be4000-7f5963cbe000 rw-p 00cd8000 08:01 9045791                    /home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/amd64/server/libjvm.so
+7f5963cbe000-7f5963d09000 rw-p 00000000 00:00 0 
+7f5963d09000-7f5963ef0000 r-xp 00000000 08:01 4592221                    /lib/x86_64-linux-gnu/libc-2.27.so
+7f5963ef0000-7f59640f0000 ---p 001e7000 08:01 4592221                    /lib/x86_64-linux-gnu/libc-2.27.so
+7f59640f0000-7f59640f4000 r--p 001e7000 08:01 4592221                    /lib/x86_64-linux-gnu/libc-2.27.so
+7f59640f4000-7f59640f6000 rw-p 001eb000 08:01 4592221                    /lib/x86_64-linux-gnu/libc-2.27.so
+7f59640f6000-7f59640fa000 rw-p 00000000 00:00 0 
+7f59640fa000-7f59640fd000 r-xp 00000000 08:01 4592244                    /lib/x86_64-linux-gnu/libdl-2.27.so
+7f59640fd000-7f59642fc000 ---p 00003000 08:01 4592244                    /lib/x86_64-linux-gnu/libdl-2.27.so
+7f59642fc000-7f59642fd000 r--p 00002000 08:01 4592244                    /lib/x86_64-linux-gnu/libdl-2.27.so
+7f59642fd000-7f59642fe000 rw-p 00003000 08:01 4592244                    /lib/x86_64-linux-gnu/libdl-2.27.so
+7f59642fe000-7f5964314000 r-xp 00000000 08:01 9045428                    /home/lizy/公共的/local/java/jdk1.8.0_171/lib/amd64/jli/libjli.so
+7f5964314000-7f5964513000 ---p 00016000 08:01 9045428                    /home/lizy/公共的/local/java/jdk1.8.0_171/lib/amd64/jli/libjli.so
+7f5964513000-7f5964514000 rw-p 00015000 08:01 9045428                    /home/lizy/公共的/local/java/jdk1.8.0_171/lib/amd64/jli/libjli.so
+7f5964514000-7f596452e000 r-xp 00000000 08:01 4592354                    /lib/x86_64-linux-gnu/libpthread-2.27.so
+7f596452e000-7f596472d000 ---p 0001a000 08:01 4592354                    /lib/x86_64-linux-gnu/libpthread-2.27.so
+7f596472d000-7f596472e000 r--p 00019000 08:01 4592354                    /lib/x86_64-linux-gnu/libpthread-2.27.so
+7f596472e000-7f596472f000 rw-p 0001a000 08:01 4592354                    /lib/x86_64-linux-gnu/libpthread-2.27.so
+7f596472f000-7f5964733000 rw-p 00000000 00:00 0 
+7f5964733000-7f596475a000 r-xp 00000000 08:01 4592193                    /lib/x86_64-linux-gnu/ld-2.27.so
+7f596475a000-7f596475b000 r--s 00000000 08:01 8143523                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.cloud/spring-cloud-starter-zipkin/2.0.1.RELEASE/ffe879466ceb9ee10d3b26a770de5a8d190143b2/spring-cloud-starter-zipkin-2.0.1.RELEASE.jar
+7f596475b000-7f596475c000 r--s 00000000 08:01 8143521                    /home/lizy/soft/gradle-4.10.2-bin/caches/modules-2/files-2.1/org.springframework.cloud/spring-cloud-starter-netflix-eureka-client/2.0.2.RELEASE/7edcdc61bea6b0f4e6b925c56b11db083e42bbe5/spring-cloud-starter-netflix-eureka-client-2.0.2.RELEASE.jar
+7f596475c000-7f596475d000 r--s 00000000 08:01 9045527                    /home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/management-agent.jar
+7f596475d000-7f596475f000 r--s 00007000 08:01 9045837                    /home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/jfxswt.jar
+7f596475f000-7f5964768000 r--s 0006d000 08:01 9045530                    /home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/javaws.jar
+7f5964768000-7f5964837000 rw-p 00000000 00:00 0 
+7f5964837000-7f5964838000 ---p 00000000 00:00 0 
+7f5964838000-7f596483b000 ---p 00000000 00:00 0 
+7f596483b000-7f596493a000 rw-p 00000000 00:00 0 
+7f596493a000-7f596493f000 r--s 00084000 08:01 9045520                    /home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/jfr.jar
+7f596493f000-7f5964942000 r--s 0001a000 08:01 9045835                    /home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/jce.jar
+7f5964942000-7f5964947000 r--s 002f9000 08:01 9045601                    /home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/charsets.jar
+7f5964947000-7f5964949000 r--s 00008000 08:01 9438283                    /home/lizy/公共的/opt/idea-IU-181.5281.24/plugins/junit/lib/junit5-rt.jar
+7f5964949000-7f596494c000 r--s 0001f000 08:01 9438282                    /home/lizy/公共的/opt/idea-IU-181.5281.24/plugins/junit/lib/junit-rt.jar
+7f596494c000-7f596494e000 r--s 0001a000 08:01 9045977                    /home/lizy/公共的/opt/idea-IU-181.5281.24/lib/idea_rt.jar
+7f596494e000-7f5964956000 rw-s 00000000 08:01 8260195                    /tmp/hsperfdata_lizy/28293
+7f5964956000-7f5964957000 rw-p 00000000 00:00 0 
+7f5964957000-7f5964958000 ---p 00000000 00:00 0 
+7f5964958000-7f596495a000 rw-p 00000000 00:00 0 
+7f596495a000-7f596495b000 r--p 00027000 08:01 4592193                    /lib/x86_64-linux-gnu/ld-2.27.so
+7f596495b000-7f596495c000 rw-p 00028000 08:01 4592193                    /lib/x86_64-linux-gnu/ld-2.27.so
+7f596495c000-7f596495d000 rw-p 00000000 00:00 0 
+7fffb781d000-7fffb7849000 rw-p 00000000 00:00 0                          [stack]
+7fffb792e000-7fffb7931000 r--p 00000000 00:00 0                          [vvar]
+7fffb7931000-7fffb7933000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+
+VM Arguments:
+jvm_args: -ea -Didea.test.cyclic.buffer.size=1048576 -javaagent:/home/lizy/公共的/opt/idea-IU-181.5281.24/lib/idea_rt.jar=34653:/home/lizy/公共的/opt/idea-IU-181.5281.24/bin -Dfile.encoding=UTF-8 
+java_command: com.intellij.rt.execution.junit.JUnitStarter -ideVersion5 -junit4 com.shop.portal.service.ShopServicePortalTest,testMenuList
+java_class_path (initial): /home/lizy/公共的/opt/idea-IU-181.5281.24/lib/idea_rt.jar:/home/lizy/公共的/opt/idea-IU-181.5281.24/plugins/junit/lib/junit-rt.jar:/home/lizy/公共的/opt/idea-IU-181.5281.24/plugins/junit/lib/junit5-rt.jar:/home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/charsets.jar:/home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/deploy.jar:/home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/ext/cldrdata.jar:/home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/ext/dnsns.jar:/home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/ext/jaccess.jar:/home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/ext/jfxrt.jar:/home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/ext/localedata.jar:/home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/ext/nashorn.jar:/home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/ext/sunec.jar:/home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/ext/sunjce_provider.jar:/home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/ext/sunpkcs11.jar:/home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/ext/zipfs.jar:/home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/javaws.jar:/home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/jce.jar:/home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/jfr.jar:/home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/jfxswt.jar:/home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/jsse.jar:/home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/management-agent.jar:/home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/plugin.jar:/home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/resources.jar:/home/lizy/公共的/local/java/jdk1.8.0_171/jre/lib/rt.jar:/home/lizy/my_microshop/micro-shop/shop-service-portal/out/test/classes:/home/lizy/my_microshop/micro-shop/shop-service-portal/out/production/classes:/home/lizy/my_microshop/micro-shop/shop-service-portal/out/production/resources:/home/lizy/my_microshop/micro-shop/shop-service-portal-api/out/production/classes:/home/lizy/my_microshop/micro-shop/shop-se
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+PATH=/home/lizy/.local/bin:/home/lizy/公共的/opt/gradle-4.8.1-bin/gradle-4.8.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+USERNAME=lizy
+SHELL=/bin/bash
+DISPLAY=:0
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0xad0890], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGBUS: [libjvm.so+0xad0890], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGFPE: [libjvm.so+0x928640], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGPIPE: [libjvm.so+0x928640], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGXFSZ: [libjvm.so+0x928640], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGILL: [libjvm.so+0x928640], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGUSR1: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGUSR2: [libjvm.so+0x929ea0], sa_mask[0]=00100000000000000000000000000000, sa_flags=SA_RESTART|SA_SIGINFO
+SIGHUP: [libjvm.so+0x92b2a0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGINT: [libjvm.so+0x92b2a0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGTERM: [libjvm.so+0x92b2a0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGQUIT: [libjvm.so+0x92b2a0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+
+
+---------------  S Y S T E M  ---------------
+
+OS:DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=18.04
+DISTRIB_CODENAME=bionic
+DISTRIB_DESCRIPTION="Ubuntu 18.04.1 LTS"
+
+uname:Linux 4.15.0-39-generic #42-Ubuntu SMP Tue Oct 23 15:48:01 UTC 2018 x86_64
+libc:glibc 2.27 NPTL 2.27 
+rlimit: STACK 8192k, CORE 0k, NPROC 29493, NOFILE 1048576, AS infinity
+load average:2.84 1.96 1.74
+
+/proc/meminfo:
+MemTotal:        7610848 kB
+MemFree:          109052 kB
+MemAvailable:      39340 kB
+Buffers:             852 kB
+Cached:           537356 kB
+SwapCached:         2760 kB
+Active:          6096592 kB
+Inactive:         938940 kB
+Active(anon):    6067700 kB
+Inactive(anon):   914212 kB
+Active(file):      28892 kB
+Inactive(file):    24728 kB
+Unevictable:         216 kB
+Mlocked:             216 kB
+SwapTotal:       2097148 kB
+SwapFree:              0 kB
+Dirty:               152 kB
+Writeback:             0 kB
+AnonPages:       6496360 kB
+Mapped:           145868 kB
+Shmem:            484104 kB
+Slab:             216436 kB
+SReclaimable:      80988 kB
+SUnreclaim:       135448 kB
+KernelStack:       25856 kB
+PageTables:        99140 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     5902572 kB
+Committed_AS:   19127324 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:           0 kB
+VmallocChunk:          0 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:         0 kB
+ShmemHugePages:        0 kB
+ShmemPmdMapped:        0 kB
+CmaTotal:              0 kB
+CmaFree:               0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+DirectMap4k:      419220 kB
+DirectMap2M:     7403520 kB
+DirectMap1G:           0 kB
+
+
+CPU:total 4 (initial active 4) (2 cores per cpu, 2 threads per core) family 6 model 142 stepping 9, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, 3dnowpref, lzcnt, ht, tsc, tscinvbit, bmi1, bmi2, adx
+
+/proc/cpuinfo:
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 142
+model name	: Intel(R) Core(TM) i5-7200U CPU @ 2.50GHz
+stepping	: 9
+microcode	: 0x8e
+cpu MHz		: 3084.614
+cache size	: 3072 KB
+physical id	: 0
+siblings	: 4
+core id		: 0
+cpu cores	: 2
+apicid		: 0
+initial apicid	: 0
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb invpcid_single pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid mpx rdseed adx smap clflushopt intel_pt xsaveopt xsavec xgetbv1 xsaves dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp flush_l1d
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf
+bogomips	: 5424.00
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 1
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 142
+model name	: Intel(R) Core(TM) i5-7200U CPU @ 2.50GHz
+stepping	: 9
+microcode	: 0x8e
+cpu MHz		: 3073.668
+cache size	: 3072 KB
+physical id	: 0
+siblings	: 4
+core id		: 1
+cpu cores	: 2
+apicid		: 2
+initial apicid	: 2
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb invpcid_single pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid mpx rdseed adx smap clflushopt intel_pt xsaveopt xsavec xgetbv1 xsaves dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp flush_l1d
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf
+bogomips	: 5424.00
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 2
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 142
+model name	: Intel(R) Core(TM) i5-7200U CPU @ 2.50GHz
+stepping	: 9
+microcode	: 0x8e
+cpu MHz		: 3066.694
+cache size	: 3072 KB
+physical id	: 0
+siblings	: 4
+core id		: 0
+cpu cores	: 2
+apicid		: 1
+initial apicid	: 1
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb invpcid_single pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid mpx rdseed adx smap clflushopt intel_pt xsaveopt xsavec xgetbv1 xsaves dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp flush_l1d
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf
+bogomips	: 5424.00
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 3
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 142
+model name	: Intel(R) Core(TM) i5-7200U CPU @ 2.50GHz
+stepping	: 9
+microcode	: 0x8e
+cpu MHz		: 3067.434
+cache size	: 3072 KB
+physical id	: 0
+siblings	: 4
+core id		: 1
+cpu cores	: 2
+apicid		: 3
+initial apicid	: 3
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb invpcid_single pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid mpx rdseed adx smap clflushopt intel_pt xsaveopt xsavec xgetbv1 xsaves dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp flush_l1d
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf
+bogomips	: 5424.00
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+
+
+Memory: 4k page, physical 7610848k(107380k free), swap 2097148k(0k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (25.171-b11) for linux-amd64 JRE (1.8.0_171-b11), built on Mar 28 2018 17:07:08 by "java_re" with gcc 4.3.0 20080428 (Red Hat 4.3.0-8)
+
+time: Thu Nov 22 19:06:25 2018
+elapsed time: 5 seconds (0d 0h 0m 5s)
+

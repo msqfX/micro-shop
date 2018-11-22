@@ -1,11 +1,15 @@
 package com.shop.sso.service;
 
+import com.alibaba.fastjson.JSON;
 import com.shop.Example.UserExample;
 import com.shop.common.RespResult;
 import com.shop.mapper.UserMapper;
 import com.shop.pojo.User;
+import com.shop.utils.JedisClient;
 import com.shop.utils.MD5Util;
+import com.shop.utils.RequestUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -17,11 +21,17 @@ import java.util.Objects;
 @RestController
 public class UserServiceImpl implements UserService {
 
+    @Value("${redisKey.expire_time}")
+    private Integer EXPIRE_TIME;
+
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    private JedisClient jedisClient;
+
     @Override
-    public RespResult login(String userName, String passWord) {
+    public RespResult login(String sessionId, String userName, String passWord) {
         if(Objects.isNull(userName)){
             return RespResult.build(400,"用户不存在");
         }
@@ -40,8 +50,8 @@ public class UserServiceImpl implements UserService {
                 return RespResult.build(400,"用户不存在");
             }
         }
-        //todo 存入reids
-
+        //存入reids
+        jedisClient.set(sessionId, JSON.toJSONString(userList.get(0)));
         return RespResult.build(200,"登录成功");
     }
 }
