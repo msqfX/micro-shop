@@ -5,8 +5,8 @@ package com.shop.utils;
  */
 public interface SessionProvider {
 
-    void setUserSession(String sessionId, String value);
+    void setAttribute(String key, String value);
 
-    String getUserSession(String sessionId);
+    String getAttribute(String key);
 
 }
