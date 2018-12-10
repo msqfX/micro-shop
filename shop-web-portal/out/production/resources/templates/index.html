@@ -120,7 +120,7 @@
                 <%
                 for(root in sortMenuList ){
                 %>
-                <li class="menulihover" onmouseenter="putParentJson('${root.item}')">
+                <li class="menulihover" onmouseenter="getParentJson(${rootLP.index})">
                     <i class="listi1"></i>
                     <a href="all-cl.html" target="_blank">${root.name}</a>
                     <span></span>
@@ -131,32 +131,14 @@
 
                 <div class="yMenuListConin">
                     <div class="yMenuLCinLisi fl">
-                        <ul>
-                            <%
-                            for(parent in sortMenuList[0].item ){
-                            %>
-                            <li><a href="#">${parent.name}<i class="fr">></i></a></li>
-                            <% } %>
+                        <ul id="sortParent">
+                            <li><a href="#">暂无分类<i class="fr">></i></a></li>
                         </ul>
                     </div>
-                    <div class="yMenuLCinList fl">
-
+                    <div class="yMenuLCinList fl childBlock" id="sortChild">
                         <p>
-                            <%
-                            for(parent in sortMenuList[0].item ){
-                            %>
-                            <a href="" class="ecolor610">${parent.name}</a>
-                            <% } %>
+                            <a href="" class="ecolor610">暂无内容</a>
                         </p>
-
-                        <p>
-                            <%
-                            for(parent in sortMenuList[1].item ){
-                            %>
-                            <a href="" class="ecolor610">${parent.name}</a>
-                            <% } %>
-                        </p>
-
                     </div>
                 </div>
 
@@ -862,6 +844,59 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">banner()</script>
 </body>
 </html>
+<script type="text/javascript">
+var rootJson;
+$(document).ready(function(){
+    banner();
+    getSortList();
+
+});
+/*<ul id="sortParent">
+    <li><a href="#">001<i class="fr">></i></a></li>
+</ul>*/
+/*<div class="yMenuLCinList fl" id="sortChild">
+    <p>
+      <a href="" class="ecolor610">暂无内容</a>
+       <a href="" class="ecolor610">暂无内容</a>
+    </p>
+</div>*/
+function getParentJson(index) {
+    var parentJson = rootJson[index-1].item;
+    console.log(index+'...parentJson is...'+parentJson.length)
+    var parentHtml = '';
+    var childerHtml = '';
+    for (var i = 0; i < 5; i++){
+        console.log(parentJson[i].name);
+        parentHtml += "<li><a href="+parentJson[i].url+">"+parentJson[i].name+"<i class=\"fr\">></i></a></li>";
+        //加载最后子层
+        var childJson = parentJson[i].item;
+        childerHtml += "<p>";
+        for(var j = 0; j<childJson.length; j++){
+            childerHtml += "<a href= "+childJson[j].url+" class=\"ecolor610\">"+childJson[j].name+"</a>";
+        }
+        childerHtml += "</p>";
+    }
+    $("#sortParent").html(parentHtml)
+    $("#sortChild").html(childerHtml)
+}
+
+//获取首页分类列表数据
+function getSortList() {
+    var loginUrl = "/getSortListJson";
+    $.ajax({
+        url: loginUrl,
+        type: "POST",
+        dataType: "json",
+        contentType: "application/x-www-form-urlencoded; charset=utf-8",
+        data:{},
+        error: function () {
+            alert("网络超时，请稍后再试");
+        },
+        success: function (result) {
+            rootJson = result
+        }
+    });
+}
+</script>

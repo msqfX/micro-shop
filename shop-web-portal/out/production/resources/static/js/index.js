@@ -27,8 +27,9 @@ $(function(){
 		
 	})
 
+/*
 function putParentJson(rootJson) {
 	debugger
 	var json = $.parseJSON(rootJson);
     alert(json[0].name);
-}
+}*/

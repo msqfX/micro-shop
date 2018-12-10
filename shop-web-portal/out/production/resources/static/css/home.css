@@ -151,6 +151,8 @@ body{min-width: 1200px; _width:expression(document.documentElement.clientWidth>1
 .yMenuLCinList h3 a{font-size: 12px;color: #2d2d2d;position: absolute;bottom: 0px;display: block;}
 .yMenuLCinList h3 .yListMore{color: #666666;font-weight: normal;right: 0;with: 40px;height: 20px;}
 .yMenuLCinList h3 .yListName:hover{left:6px;}
+.childBlock p{min-height: 40px;height: 25%}
+
 
 
 
