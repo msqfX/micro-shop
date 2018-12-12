@@ -1,9 +1,7 @@
 package com.shop.item.controller;
 
-import com.netflix.discovery.converters.Auto;
 import com.shop.item.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
  * Created By Lizhengyuan on 18-11-12
  */
 @Controller
-@RequestMapping("/")
 public class ItemController {
 
     @Autowired
@@ -35,4 +32,16 @@ public class ItemController {
         return "item";
     }
 
+    /**
+     * 根据商品分类查询商品
+     * @param itemCatId
+     * @param model  getItemByCat?itemCatId
+     * @return
+     */
+    @RequestMapping("getItemByCat")
+    public Object getItemByCat(@RequestParam String itemCatId, Model model){
+        Object itemList = itemService.getItemByCat(itemCatId);
+        model.addAttribute("itemList", itemList);
+        return "item";
+    }
 }

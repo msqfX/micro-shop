@@ -18,4 +18,7 @@ public interface ItemService {
 
     @RequestMapping(value = "/getItemDescById", method = RequestMethod.GET)
     Object getItemDescById(@RequestParam(value = "id") String id);
+
+    @RequestMapping(value = "/getItemByCat", method = RequestMethod.GET)
+    Object getItemByCat(String itemCatId);
 }

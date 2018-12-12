@@ -862,27 +862,33 @@ $(document).ready(function(){
        <a href="" class="ecolor610">暂无内容</a>
     </p>
 </div>*/
+/**
+ * 加载二级和三级分类列表
+ * @param index
+ */
 function getParentJson(index) {
     var parentJson = rootJson[index-1].item;
     console.log(index+'...parentJson is...'+parentJson.length)
     var parentHtml = '';
-    var childerHtml = '';
+    var childHtml = '';
     for (var i = 0; i < 5; i++){
         console.log(parentJson[i].name);
         parentHtml += "<li><a href="+parentJson[i].url+">"+parentJson[i].name+"<i class=\"fr\">></i></a></li>";
         //加载最后子层
         var childJson = parentJson[i].item;
-        childerHtml += "<p>";
+        childHtml += "<p>";
         for(var j = 0; j<childJson.length; j++){
-            childerHtml += "<a href= "+childJson[j].url+" class=\"ecolor610\">"+childJson[j].name+"</a>";
+            childHtml += "<a href= "+childJson[j].url+" class=\"ecolor610\">"+childJson[j].name+"</a>";
         }
-        childerHtml += "</p>";
+        childHtml += "</p>";
     }
     $("#sortParent").html(parentHtml)
-    $("#sortChild").html(childerHtml)
+    $("#sortChild").html(childHtml)
 }
 
-//获取首页分类列表数据
+/**
+ * 获取首页分类列表数据
+ */
 function getSortList() {
     var loginUrl = "/getSortListJson";
     $.ajax({

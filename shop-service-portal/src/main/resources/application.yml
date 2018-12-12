@@ -47,3 +47,7 @@ redisKey:
   prefix:
     # 首页大广告
     index_ad: INDEX_AD
+
+
+#商品服务
+item_path: http://localhost:8104/

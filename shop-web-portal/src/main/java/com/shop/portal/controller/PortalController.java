@@ -3,6 +3,7 @@ package com.shop.portal.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.shop.portal.service.PortalService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 public class PortalController {
+
+    @Value("${user_path.login}")
+    private String loginPath;
 
     @Autowired
     private PortalService portalService;
@@ -40,9 +44,14 @@ public class PortalController {
         //String userName = CookieUtil.getCookieValue(request, Constant.TOKEN_LOGIN);
         //model.addAttribute("userName", userName);
         model.addAttribute("sortMenuList", portalService.getSortMenuList());
+        model.addAttribute("loginPath", loginPath);
         return "index";
     }
 
+    /**
+     * 获取分类列表数据
+     * @return
+     */
     @RequestMapping("getSortListJson")
     @ResponseBody
     public Object getSortListJson(){

@@ -1,5 +1,6 @@
 package com.shop.item.service.impl;
 
+import com.shop.Example.ItemCatExample;
 import com.shop.Example.ItemDescExample;
 import com.shop.Example.ItemExample;
 import com.shop.item.service.ItemService;
@@ -51,6 +52,15 @@ public class ItemServiceImpl implements ItemService {
         criteria.andItemIdEqualTo(Long.parseLong(id));
         List<ItemDesc> itemDescList = itemDescMapper.selectByExample(itemDescExample);
         return itemDescList.isEmpty() ? null : itemDescList.get(0);
+    }
+
+    @Override
+    public Object getItemByCat(String itemCatId) {
+        ItemExample itemExample = new ItemExample();
+        ItemExample.Criteria criteria = itemExample.createCriteria();
+        criteria.andCidEqualTo(Long.parseLong(itemCatId));
+        List<Item> itemList = itemMapper.selectByExample(itemExample);
+        return itemList;
     }
 
 

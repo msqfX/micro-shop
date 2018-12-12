@@ -23,6 +23,9 @@ spring:
 # 广告Cid
 big_ad_index: 1
 
+#商品服务器
+item_path: http://localhost:8104/
+
 
 
 

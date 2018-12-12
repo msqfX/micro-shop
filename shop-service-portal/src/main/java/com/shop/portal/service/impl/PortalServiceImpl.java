@@ -9,6 +9,7 @@ import com.shop.portal.service.PortalService;
 import com.shop.utils.JsonUtils;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,6 +24,9 @@ import java.util.Map;
 @Api(value = "API - PortalServiceImpl", description = "首页操作")
 @RestController
 public class PortalServiceImpl implements PortalService {
+
+    @Value("${item_path}")
+    private String itemPath;
 
     @Autowired
     private ItemCatMapper itemCatMapper;
@@ -66,19 +70,18 @@ public class PortalServiceImpl implements PortalService {
             CatNode catNode = new CatNode();
             List<CatNode> parentItem = new ArrayList<>();
             catNode.setName(parentNode.getName());
-            catNode.setUrl("/getItemByCat?itemCatId="+parentNode.getId());
+            catNode.setUrl(itemPath+"/getItemByCat?itemCatId="+parentNode.getId());
             nextList.forEach( next ->{
                 if(parentNode.getId() == next.getParentId()){
                     CatNode nextNode = new CatNode();
                     nextNode.setName(next.getName());
-                    nextNode.setUrl("/getItemByCat?itemCatId="+next.getId());
+                    nextNode.setUrl(itemPath+"/getItemByCat?itemCatId="+next.getId());
                     List<ItemCatVo> childItem = new ArrayList<>();
-                    ItemCatVo itemCatVo = new ItemCatVo();
                     childList.forEach( child -> {
                         if(next.getId() == child.getParentId()){
-                            itemCatVo.setName(next.getName());
-                            itemCatVo.setUrl(next.getName());
-                            //childItem.add("/getItemByCat?itemCatId="+child.getId());
+                            ItemCatVo itemCatVo = new ItemCatVo();
+                            itemCatVo.setName(child.getName());
+                            itemCatVo.setUrl(itemPath+"/getItemByCat?itemCatId="+child.getId());
                             childItem.add(itemCatVo);
                         }
                     });
