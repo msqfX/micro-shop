@@ -75,7 +75,7 @@ configure(allprojects) { project ->
         beetlVersion                = "2.9.3"
         log4jVersion                = "1.2.17"
         lombokVersion               = "1.18.4"
-
+        redissonVersion             = "3.10.2"
     }
 
     repositories {
@@ -121,6 +121,7 @@ project("shop-common") {
         compile("org.slf4j:slf4j-api:${slf4jVersion}")
         compile("io.springfox:springfox-swagger-ui:${swagger2Version}")
         compile("io.springfox:springfox-swagger2:${swagger2Version}")
+        compile("org.redisson:redisson:${redissonVersion}")
     }
 }
 
