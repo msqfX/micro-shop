@@ -19,11 +19,6 @@ buildscript {
     }
 }
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '3.4'
-}
-
-
 // 所有子项目的通用配置
 configure(allprojects) { project ->
     apply plugin: 'java'
