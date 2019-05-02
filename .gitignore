@@ -3,6 +3,7 @@ dist
 target/
 build/
 .gradle/
+.DS_Store/
 lib_managed/
 src_managed/
 project/boot/
