@@ -39,4 +39,5 @@ include 'shop-web-search'
 include 'shop-web-sso'
 
 include 'shop-zuul'
+include 'shop-config-server'
 

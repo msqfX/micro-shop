@@ -10,3 +10,11 @@ eureka:
     serviceUrl:
       defaultZone: ${eureka.serviceUrl:http://127.0.0.1:8501/eureka/}
 
+#自定义路由映射
+zuul:
+  routes:
+    shop-service-portal: /api_gateway/**
+  #ignored-services: shop-service-portal
+  ignored-patterns: /*-service-*/**
+  #避免请求头敏感信息过滤
+  sensitive-headers:

@@ -23,8 +23,13 @@ spring:
 # 广告Cid
 big_ad_index: 1
 
-#商品服务器
+#商品服务
 item_path: http://localhost:8104/
+
+#登录服务
+user_path:
+  base: http://localhost:8100/
+  login: http://localhost:8100/login
 
 
 

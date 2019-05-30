@@ -151,7 +151,6 @@ project("shop-eureka") {
         compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server:${eurekaServerVersion}")
         compile("com.github.danielwegener:logback-kafka-appender:${logbackkafkaVersion}")
         compile("javax.servlet:javax.servlet-api:${servletapiVersion}")
-        //compile("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
     }
 }
 
@@ -307,6 +306,9 @@ project("shop-service-portal") {
         compile("org.springframework.boot:spring-boot-starter-data-redis:${springBootRedisVersion}")
         compile("javax.servlet:javax.servlet-api:${servletapiVersion}")
         compile("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
+        compile("org.springframework.cloud:spring-cloud-starter-sleuth:2.0.2.RELEASE")
+        compile("org.springframework.cloud:spring-cloud-starter-zipkin:2.0.2.RELEASE")
+        compile("org.springframework.cloud:spring-cloud-config-client:2.0.2.RELEASE")
     }
 }
 
@@ -331,6 +333,7 @@ project("shop-service-search") {
         compile("org.springframework.cloud:spring-cloud-starter-bus-amqp:${amapVersion}")
         compile("com.ctrip.framework.apollo:apollo-client:${apolloclientVersion}")
         compile("org.springframework.data:spring-data-solr:${solrVersion}")
+        compile("org.springframework.cloud:spring-cloud-starter-sleuth:2.0.2.RELEASE")
     }
 }
 
@@ -357,6 +360,7 @@ project("shop-service-sso") {
         compile("org.springframework.boot:spring-boot-starter-data-redis:${springBootRedisVersion}")
         compile("javax.servlet:javax.servlet-api:${servletapiVersion}")
         compile("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
+        compile("org.springframework.cloud:spring-cloud-starter-sleuth:2.0.2.RELEASE")
     }
 }
 
@@ -483,8 +487,22 @@ project("shop-zuul"){
 
     dependencies{
         compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:${eurekaServerVersion}")
-        compile("org.springframework.cloud:pring-cloud-starter-netflix-zuul:2.1.1.RELEASE")
-        
+        compile("org.springframework.cloud:spring-cloud-starter-netflix-zuul:2.0.2.RELEASE")
+        compile("javax.servlet:javax.servlet-api:${servletapiVersion}")
     }
 
 }
+
+project("shop-config-server"){
+    description = "shop-config-server"
+
+    dependencies{
+        compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:${eurekaServerVersion}")
+        compile("org.springframework.cloud:spring-cloud-config-server:2.0.2.RELEASE")
+        compile("javax.servlet:javax.servlet-api:${servletapiVersion}")
+    }
+
+}
+
+
+

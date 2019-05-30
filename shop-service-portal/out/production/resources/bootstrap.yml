@@ -7,6 +7,16 @@ spring:
 
   security.basic.enabled: false
 
+  cloud:
+    config:
+      discovery:
+        service-id: CONFIG-SERVER
+        enabled: true
+      profile: test
+      #建议用lable去区分环境，默认是lable是master分支
+      label: test
+
+
 #management:
  # security:
   #  enabled: false

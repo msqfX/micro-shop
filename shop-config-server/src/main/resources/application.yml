@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/lizy1/shop_cloud_config
+          username: 358525887@qq.com
+          password: 1050lzy$
+          timeout: 5
+          default-label: master
+
+server:
+  port: 9001
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${eureka.serviceUrl:http://127.0.0.1:8501/eureka/}
